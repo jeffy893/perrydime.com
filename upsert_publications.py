@@ -149,24 +149,30 @@ def process_publication(row, base_dir):
     amazon_ebook = row.get('Amazon eBook Link', '').strip()
     amazon_print = row.get('Amazon Print link', '').strip()
     
-    # Get backup PDF
+    # Get backup PDF or external link
     pdf_file = row.get('If No Amazon Link - then PDF Slip in Folder', '').strip()
     pdf_path = None
     
-    # Only process PDF if no Amazon links exist
+    # Only process PDF/link if no Amazon links exist
     if pdf_file and not amazon_ebook and not amazon_print:
-        pdf_source = pub_dir / pdf_file
-        if pdf_source.exists():
-            # Copy to docs/assets/pdfs/
-            dest_dir = script_dir / "docs/assets/pdfs"
-            dest_dir.mkdir(parents=True, exist_ok=True)
-            dest_file = dest_dir / f"{folder}.pdf"
-            
-            shutil.copy(pdf_source, dest_file)
-            pdf_path = f"assets/pdfs/{folder}.pdf"
-            print(f"  ✓ Copied PDF: {pdf_file}")
+        # Check if it's an external URL
+        if pdf_file.startswith('http://') or pdf_file.startswith('https://'):
+            pdf_path = pdf_file
+            print(f"  ✓ Using external link: {pdf_file}")
         else:
-            print(f"  Warning: PDF not found: {pdf_file}")
+            # Local PDF file
+            pdf_source = pub_dir / pdf_file
+            if pdf_source.exists():
+                # Copy to docs/assets/pdfs/
+                dest_dir = script_dir / "docs/assets/pdfs"
+                dest_dir.mkdir(parents=True, exist_ok=True)
+                dest_file = dest_dir / f"{folder}.pdf"
+                
+                shutil.copy(pdf_source, dest_file)
+                pdf_path = f"assets/pdfs/{folder}.pdf"
+                print(f"  ✓ Copied PDF: {pdf_file}")
+            else:
+                print(f"  Warning: PDF not found: {pdf_file}")
     
     return {
         'folder': folder,
@@ -391,7 +397,11 @@ def create_publication_card(soup, pub):
     
     if pub['pdf']:
         pdf_link = soup.new_tag('a', href=pub['pdf'], target='_blank', **{'class': 'pub-link pdf-link'})
-        pdf_link.string = "Read PDF"
+        # Use different text for external links vs local PDFs
+        if pub['pdf'].startswith('http'):
+            pdf_link.string = "View Online"
+        else:
+            pdf_link.string = "Read PDF"
         links_div.append(pdf_link)
     
     content_div.append(links_div)
