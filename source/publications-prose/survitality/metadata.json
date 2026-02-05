@@ -1,0 +1,131 @@
+{
+  "title": "Survitality of the Synapse",
+  "trim_size": "6x9",
+  "author": "Jefferson Richards",
+  "original_publication_year": "2015",
+  "public_domain_status": "Original Work - All Rights Reserved",
+  "publisher": "Perry Dime Publications",
+  "parent_company": "Richards Plus, LLC",
+  "publication_year": "2015",
+  "edition": "First Edition",
+  "isbn": "",
+  "categories": [
+    "Science & Technology",
+    "Neuroscience",
+    "Computer Science",
+    "Data Architecture",
+    "Systems Thinking",
+    "Philosophy of Science"
+  ],
+  "keywords": [
+    "neurobiology",
+    "data architecture",
+    "neural networks",
+    "machine learning",
+    "systems thinking",
+    "synapse",
+    "artificial intelligence",
+    "organic systems",
+    "signal processing",
+    "integrated pest management"
+  ],
+  "description": "Exploring the intersection of neurobiology, AI, and data architecture. Bridges organic neural networks with artificial intelligence and machine learning systems through systems thinking.",
+  "language": "English",
+  "page_count_estimate": 150,
+  "file_size_kb": 150,
+  "images": {
+    "count": 7,
+    "types": [
+      "music_scores",
+      "qr_codes"
+    ],
+    "files": [
+      "artificial_intercourse.jpg",
+      "buried_intercourse.jpg",
+      "natural_intercourse.jpg",
+      "qr_jefferson_cloud.png",
+      "qr_richards_systems.png",
+      "qr_richards_plus.png"
+    ]
+  },
+  "marketing": {
+    "qr_codes": [
+      {
+        "url": "https://www.jefferson.cloud",
+        "label": "socialize",
+        "file": "qr_jefferson_cloud.png"
+      },
+      {
+        "url": "https://www.richards.systems",
+        "label": "decode",
+        "file": "qr_richards_systems.png"
+      },
+      {
+        "url": "https://www.richards.plus",
+        "label": "consult",
+        "file": "qr_richards_plus.png"
+      }
+    ],
+    "contact_email": "jefferson@richards.plus",
+    "websites": [
+      "www.jefferson.cloud",
+      "www.richards.systems",
+      "www.richards.plus"
+    ]
+  },
+  "structure": {
+    "front_matter": [
+      "Title Page",
+      "Dedication",
+      "Preface",
+      "Table of Contents"
+    ],
+    "part_1": {
+      "title": "Foundations",
+      "chapters": [
+        "I. Data Architecture",
+        "II. Neurobiology",
+        "III. Inorganic Circuitry",
+        "IV. Machine Learning",
+        "V. Neural Networks"
+      ]
+    },
+    "intermission": {
+      "title": "Synaptic Intermission",
+      "content": [
+        "Music Score: Artificial Intercourse",
+        "Music Score: Buried Intercourse",
+        "Music Score: Natural Intercourse"
+      ]
+    },
+    "part_2": {
+      "title": "Integration",
+      "chapters": [
+        "5. Statistical Signal Processing",
+        "4. Macro Synapse",
+        "3. Grandfather Pendulum Swing",
+        "2. Proposed Reproducible Experiment",
+        "1. Conclusion"
+      ]
+    },
+    "back_matter": [
+      "About the Author",
+      "Connect With Us",
+      "Copyright Page"
+    ]
+  },
+  "themes": [
+    "Natural vs. Artificial Systems",
+    "Neurobiology and Data Architecture",
+    "Machine Learning and Neural Networks",
+    "Statistical Signal Processing",
+    "Systems Thinking",
+    "Integrated Pest Management as Metaphor",
+    "Rationality and Irrationality",
+    "Objectivity and Subjectivity"
+  ],
+  "status": "ready",
+  "kdp_ready": true,
+  "last_updated": "2026-02-01",
+  "notes": "Original work by Jefferson Richards. Not public domain. All rights reserved by author. First book published under Perry Dime Publications imprint, serving as the template for subsequent public domain book series."
+}

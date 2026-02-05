@@ -1,0 +1,15 @@
+Folder,Metadata,Cover Art,Amazon eBook Link,Amazon Print link,If No Amazon Link - then PDF Slip in Folder
+Survitality,metadata.json,survitality-cover.png,https://www.amazon.com/dp/B0GLF52614,https://www.amazon.com/dp/B0GLFMX155,
+Responsibility-futures,metadata.json,stockholm-cover.png,https://www.amazon.com/dp/B0GLFBK9DL,https://www.amazon.com/dp/B0GL5XM82R,
+Neuro-journal,"Title: 2010 Neurosurgery Journal Author: Jefferson Richards Description: 2010 journal during Jefferson’s internship with a Neurosurgeon at St. Elizabeth’s Hospital in Boston. Written: 2010",neuro-cover.jpg,,,2010_Jefferson_Richards_Neuro_Journal.pdf
+Freedom-to-model,"Title: 2013 Author: Jefferson Richards Description: 2013 journal during Jefferson’s time at UC Davis about American Philosophy. Written: 2013",freedom-to-model-cover.png,,,2014-10-14_Freedom-to-Model.pdf
+Letters-from-america,"Title: Letters from America Author: Frank M. Hursley Jr Description: 1977 letters from Frank M. Hursley Jr. to a British fly fishing journal Written: 1977",letters-from-america.png,,,Letters-from-America_FrankHursley.pdf
+Critique-of-judgment,metadata.json,Judgment-cover.png,https://www.amazon.com/dp/B0GLDYRLDB,https://www.amazon.com/dp/B0GLF969WH,
+Einsteins-relativity,relativity-metadata.json,relativity-cover.png,https://www.amazon.com/dp/B0GLHJ495W,,
+Flatland,metadata.json,flatland-cover.png,,https://www.amazon.com/dp/B0GL6KSXVD,
+Gallic-wars,gallic-wars-metadata.json,gallic-wars-cover.png,,,The Gallic Wars.pdf
+Jesus-parables,metadata.json,parables-cover.png,,,The Parables of Jesus.pdf
+Letters-of-euler,metadata.json,euler-cover.png,https://www.amazon.com/dp/B0GL3BGJZV,https://www.amazon.com/dp/B0GL7VV35J,
+Meditations,meditations-metadata.json,meditations-cover.png,,,Meditations.pdf
+second-treatise,metadata.json,treatise-cover.png,https://www.amazon.com/dp/B0GL4CBQYT,https://www.amazon.com/dp/B0GL7L6ZJ1,
+the-prophet,metadata.json,prophet-cover.png,,,The Prophet.pdf

@@ -1,0 +1,65 @@
+{
+  "title": "The Gallic Wars",
+  "trim_size": "6x9",
+  "subtitle": "Commentaries on the Gallic War",
+  "author": "Julius Caesar",
+  "translator": "W. A. McDevitte",
+  "original_publication_year": "58-49 BC (written), 1869 (this translation)",
+  "public_domain_status": "Public Domain",
+  "original_work_information": {
+    "author_names": [
+      "Gaius Julius Caesar",
+      "Aulus Hirtius (Book VIII only)"
+    ],
+    "author_death_dates": [
+      "44 BC (Julius Caesar)",
+      "43 BC (Aulus Hirtius)"
+    ],
+    "initial_publication_date": "c. 50-44 BC",
+    "initial_publication_country": "Roman Republic",
+    "confirmation_links": [
+      "https://en.wikipedia.org/wiki/Commentarii_de_Bello_Gallico",
+      "https://www.britannica.com/topic/Commentarii-de-bello-Gallico",
+      "https://www.gutenberg.org/ebooks/10657"
+    ]
+  },
+  "translated_work_information": {
+    "translator_names": [
+      "W. A. McDevitte",
+      "W. S. Bohn"
+    ],
+    "translator_death_dates": [
+      "Unknown (pre-1923)",
+      "Unknown (pre-1923)"
+    ],
+    "translation_publication_date": "1869",
+    "translation_publication_country": "United States",
+    "confirmation_links": [
+      "https://www.gutenberg.org/ebooks/10657",
+      "https://archive.org/details/caesarscommentar00caes",
+      "https://en.wikipedia.org/wiki/Commentarii_de_Bello_Gallico#English_translations"
+    ]
+  },
+  "publisher": "Perry Dime Publications",
+  "publication_year": "2026",
+  "isbn": "",
+  "categories": [
+    "History > Ancient > Rome",
+    "Biography & Autobiography > Military"
+  ],
+  "keywords": [
+    "Julius Caesar",
+    "Roman history",
+    "Gallic Wars",
+    "military history",
+    "ancient Rome",
+    "Gaul",
+    "classical literature"
+  ],
+  "description": "Caesar's firsthand account of his military campaigns in Gaul (58-50 BC). A masterclass in military strategy, political maneuvering, and classical Latin prose from one of history's greatest generals.",
+  "language": "English",
+  "page_count_estimate": 350,
+  "edition_notes": "This edition presents Julius Caesar's complete Commentaries on the Gallic War (Books I-VIII), translated by W. A. McDevitte. The text includes all eight books: the first seven written by Caesar himself covering his campaigns from 58-52 BC, and Book VIII written by his officer Aulus Hirtius covering the final campaigns of 51-50 BC. The translation preserves Caesar's clear, direct prose style while making this ancient masterpiece accessible to modern readers. These commentaries remain essential reading for understanding Roman military organization, ancient warfare, and the personality of one of history's most influential figures.",
+  "author_bio": "<p>Gaius Julius Caesar (100-44 BC) was a Roman general, statesman, and author whose military conquests and political career transformed the Roman Republic into the Roman Empire. Born into a patrician family, Caesar rose through the ranks of Roman politics and military command to become one of the most powerful men in history.</p>\n\n<p>His military campaigns in Gaul (58-50 BC), documented in these commentaries, expanded Roman territory significantly and demonstrated his exceptional abilities as both a general and a writer. Caesar's clear, direct prose style in Latin became a model for military writing and has been studied by students of Latin for over two thousand years. His famous opening line, \"Gallia est omnis divisa in partes tres\" (\"All Gaul is divided into three parts\"), remains one of the most recognizable sentences in classical literature.</p>\n\n<p>Beyond his military achievements, Caesar was a skilled politician and reformer. He formed the First Triumvirate with Pompey and Crassus, crossed the Rubicon River in defiance of the Senate (giving us the phrase \"crossing the Rubicon\"), and became dictator of Rome. His reforms of the calendar gave us the Julian calendar, and the month of July bears his name.</p>\n\n<p>Caesar's assassination on the Ides of March (March 15) in 44 BC by a group of senators led by Brutus and Cassius became one of history's most famous political murders, immortalized by Shakespeare. His adopted heir, Octavian (later Augustus), would become the first Roman Emperor. Caesar's legacy as a military genius, political innovator, and literary figure continues to influence Western civilization more than two millennia after his death.</p>",
+  "status": "ready"
+}

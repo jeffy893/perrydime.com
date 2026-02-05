@@ -1,0 +1,64 @@
+{
+  "title": "Meditations",
+  "trim_size": "6x9",
+  "author": "Marcus Aurelius",
+  "original_publication_year": "circa 170-180 AD",
+  "this_edition": "George Long translation",
+  "public_domain_status": "Public Domain",
+  "original_work_information": {
+    "author_names": [
+      "Marcus Aurelius Antoninus"
+    ],
+    "author_death_dates": [
+      "180 AD"
+    ],
+    "initial_publication_date": "c. 170-180 AD (written), first published posthumously",
+    "initial_publication_country": "Roman Empire",
+    "original_title": "Ta eis heauton (Τὰ εἰς ἑαυτόν) - 'To Himself'",
+    "confirmation_links": [
+      "https://en.wikipedia.org/wiki/Meditations",
+      "https://www.britannica.com/topic/Meditations-work-by-Marcus-Aurelius",
+      "https://www.gutenberg.org/ebooks/2680"
+    ]
+  },
+  "translated_work_information": {
+    "translator_names": [
+      "George Long"
+    ],
+    "translator_death_dates": [
+      "1879"
+    ],
+    "translation_publication_date": "1862",
+    "translation_publication_country": "United Kingdom",
+    "confirmation_links": [
+      "https://www.gutenberg.org/ebooks/2680",
+      "https://en.wikipedia.org/wiki/George_Long_(scholar)",
+      "https://archive.org/details/thoughtsofempero00marc"
+    ]
+  },
+  "publisher": "Perry Dime Publications",
+  "publication_year": "2026",
+  "isbn": "",
+  "categories": [
+    "Philosophy > Ethics & Morality",
+    "Philosophy > Ancient"
+  ],
+  "keywords": [
+    "Marcus Aurelius",
+    "Stoicism",
+    "philosophy",
+    "Roman emperor",
+    "ancient philosophy",
+    "self-improvement",
+    "wisdom"
+  ],
+  "description": "Marcus Aurelius's personal reflections on Stoic philosophy and leadership. Written as private notes by a Roman Emperor, these timeless meditations on virtue, duty, and resilience remain profoundly relevant.",
+  "language": "English",
+  "page_count_estimate": 200,
+  "source": "Project Gutenberg eBook #2680",
+  "translator": "George Long",
+  "content_type": "Philosophical Reflections",
+  "edition_notes": "This edition presents the complete Meditations of Marcus Aurelius in the classic George Long translation. Written during the emperor's military campaigns, these twelve books contain his private philosophical reflections on Stoic principles and the art of living well. Marcus Aurelius never intended these writings for publication; they were personal notes to himself, making them uniquely intimate and authentic. The text includes an introduction providing historical context about Marcus Aurelius's life and reign, as well as the philosophical background of Stoicism. This work stands as one of the greatest examples of Stoic philosophy and continues to inspire readers seeking wisdom on virtue, duty, and inner peace.",
+  "author_bio": "Marcus Aurelius Antoninus (121-180 AD) was Roman Emperor from 161 to 180 and is considered one of the most important Stoic philosophers. Born into a prominent Roman family, he was adopted by Emperor Antoninus Pius and trained from youth in Stoic philosophy. As emperor, he faced numerous challenges including wars on the frontiers, plague, and political intrigue, yet he remained committed to philosophical principles and just governance. His Meditations, written in Greek during military campaigns, were never intended for publication but have become one of the most influential works of philosophy. Marcus Aurelius is remembered as the last of the 'Five Good Emperors' and as a philosopher-king who embodied the Stoic ideals of wisdom, justice, courage, and self-discipline. His reign marked the end of the Pax Romana, and his death was followed by the troubled rule of his son Commodus.",
+  "status": "ready"
+}

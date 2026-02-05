@@ -1,0 +1,40 @@
+{
+  "title": "Flatland: A Romance of Many Dimensions",
+  "trim_size": "6x9",
+  "subtitle": "",
+  "author": "Edwin Abbott Abbott",
+  "translator": "",
+  "original_publication_year": "1884",
+  "public_domain_status": "Public Domain",
+  "publisher": "Perry Dime Publications",
+  "publication_year": "2026",
+  "isbn": "",
+  "edition": "First Perry Dime Publications Edition",
+  "language": "English",
+  "page_count_estimate": 120,
+  "categories": [
+    "Fiction > Science Fiction > Classic",
+    "Fiction > Satire",
+    "Mathematics > Geometry",
+    "Philosophy > Metaphysics"
+  ],
+  "keywords": [
+    "flatland",
+    "dimensions",
+    "geometry",
+    "satire",
+    "Victorian",
+    "mathematics",
+    "science fiction",
+    "social commentary",
+    "Edwin Abbott",
+    "classic literature"
+  ],
+  "description": "Abbott's satirical novella exploring dimensions, social hierarchy, and perception. A square's journey from 2D Flatland to 3D Spaceland challenges our understanding of reality.",
+  "author_bio": "Edwin Abbott Abbott (1838-1926) was an English schoolmaster, theologian, and writer. Born in London, Abbott was educated at the City of London School and St John's College, Cambridge, where he distinguished himself as a scholar. He became headmaster of the City of London School at the remarkably young age of 26, a position he held for 24 years.\n\nAbbott was a prolific writer, producing works on theology, Shakespeare, and education. However, he is best remembered for Flatland, published in 1884 under the pseudonym \"A Square.\" This mathematical fantasy was unlike anything else Abbott wrote—a brilliant fusion of geometry, social satire, and philosophical speculation about dimensions beyond our perception.\n\nFlatland was Abbott's subtle critique of Victorian society's rigid class structure and treatment of women, disguised as a mathematical romance. The book's inhabitants are geometric shapes whose number of sides determines their social status, with women reduced to mere line segments. Through this geometric allegory, Abbott challenged his contemporaries to imagine perspectives beyond their limited experience.\n\nThough Flatland received modest attention during Abbott's lifetime, it has since become a classic of mathematical literature and science fiction. The book has influenced countless writers, scientists, and mathematicians, and remains widely read and studied today. Abbott's imaginative exploration of dimensional thinking predated Einstein's theories and continues to inspire discussions about the nature of reality and the limits of human perception.",
+  "edition_notes": "This edition presents Abbott's complete text of Flatland, including both the original preface and the author's preface to the second edition. The work is presented in two parts: Part I explores the two-dimensional world of Flatland and its inhabitants, serving as both a primer on dimensional thinking and a satire of Victorian society. Part II follows the Square's mind-expanding encounters with other dimensions, from the one-dimensional Lineland to the three-dimensional Spaceland. Abbott's geometric illustrations and mathematical concepts are preserved to maintain the work's educational and imaginative power.",
+  "source_file": "source/flatland.txt",
+  "kdp_ready_file": "kdp-ready.html",
+  "status": "ready",
+  "notes": "Source from Project Gutenberg eBook #201. Classic mathematical fantasy and social satire. Plain text format. File size: 212.5 KB."
+}

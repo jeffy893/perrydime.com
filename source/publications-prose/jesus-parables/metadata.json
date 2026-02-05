@@ -1,0 +1,72 @@
+{
+  "title": "The Parables of Jesus",
+  "trim_size": "6x9",
+  "subtitle": "Thirty Parables from the Gospels",
+  "author": "Jesus Christ",
+  "compiler": "Traditional Collection",
+  "original_publication_year": "1st Century AD",
+  "public_domain_status": "Public Domain",
+  "original_work_information": {
+    "author_names": [
+      "Jesus Christ (speaker)",
+      "Matthew (Gospel of Matthew)",
+      "Mark (Gospel of Mark)",
+      "Luke (Gospel of Luke)"
+    ],
+    "author_death_dates": [
+      "c. 30-33 AD (Jesus)",
+      "c. 74 AD (Matthew, traditional)",
+      "c. 68 AD (Mark, traditional)",
+      "c. 84 AD (Luke, traditional)"
+    ],
+    "initial_publication_date": "c. 50-90 AD (Gospels written)",
+    "initial_publication_country": "Roman Empire (various locations)",
+    "original_language": "Koine Greek (Gospels)",
+    "confirmation_links": [
+      "https://en.wikipedia.org/wiki/Parables_of_Jesus",
+      "https://www.britannica.com/topic/parable",
+      "https://en.wikipedia.org/wiki/Gospel"
+    ]
+  },
+  "translated_work_information": {
+    "translator_names": [
+      "King James Bible Translation Committee (54 scholars)"
+    ],
+    "translator_death_dates": [
+      "Various (all died before 1700)"
+    ],
+    "translation_publication_date": "1611",
+    "translation_publication_country": "England",
+    "translation_commissioned_by": "King James I of England",
+    "confirmation_links": [
+      "https://en.wikipedia.org/wiki/King_James_Version",
+      "https://www.britannica.com/topic/King-James-Version",
+      "https://www.kingjamesbibleonline.org/"
+    ]
+  },
+  "publisher": "Perry Dime Publications",
+  "publication_year": "2026",
+  "isbn": "",
+  "categories": [
+    "Religion & Spirituality > Christianity > Bible Study",
+    "Religion & Spirituality > Inspirational"
+  ],
+  "keywords": [
+    "Jesus parables",
+    "Bible stories",
+    "Christian teachings",
+    "Gospel parables",
+    "New Testament",
+    "religious literature",
+    "spiritual wisdom"
+  ],
+  "description": "A collection of Jesus's teaching stories from the Gospels. These timeless parables use everyday situations to convey profound spiritual and moral truths about the Kingdom of God.",
+  "language": "English",
+  "page_count_estimate": 80,
+  "source": "Traditional biblical text compilation",
+  "translation": "King James Version",
+  "content_type": "Religious Literature",
+  "edition_notes": "This edition presents thirty parables of Jesus Christ from the Gospels, using the King James Version translation. Each parable includes the complete biblical text with scripture references from Matthew, Mark, and Luke. The parables are arranged in a traditional order and include both well-known stories like The Good Samaritan and The Prodigal Son, as well as lesser-known teachings. This collection serves as an accessible introduction to Jesus's teaching method and spiritual wisdom.",
+  "author_bio": "Jesus Christ (c. 4 BC – c. AD 30/33) was a first-century Jewish preacher and religious leader who became the central figure of Christianity. According to the Gospels, Jesus taught primarily through parables—short, memorable stories that conveyed spiritual and moral truths. His teachings emphasized love, compassion, forgiveness, and the Kingdom of God. The parables collected here represent his most enduring and influential stories, which have been studied, interpreted, and cherished by billions of people across two millennia. These simple yet profound narratives continue to offer wisdom and guidance for readers of all faiths and backgrounds.",
+  "status": "ready"
+}

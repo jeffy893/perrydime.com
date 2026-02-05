@@ -1,0 +1,83 @@
+{
+  "title": "Relativity: The Special and General Theory",
+  "trim_size": "6x9",
+  "subtitle": "A Popular Exposition",
+  "author": "Albert Einstein",
+  "translator": "Robert W. Lawson",
+  "original_publication_year": "1916",
+  "english_publication_year": "1920",
+  "public_domain_status": "Public Domain",
+  "original_work": {
+    "authors": [
+      {
+        "name": "Albert Einstein",
+        "birth_year": "1879",
+        "death_year": "1955",
+        "death_date": "April 18, 1955"
+      }
+    ],
+    "original_title": "Über die spezielle und die allgemeine Relativitätstheorie (Gemeinverständlich)",
+    "initial_publication_date": "1916",
+    "initial_publication_country": "Germany",
+    "original_language": "German",
+    "revised_edition_date": "1924",
+    "source_links": [
+      "https://en.wikipedia.org/wiki/Albert_Einstein",
+      "https://www.gutenberg.org/ebooks/30155",
+      "https://einsteinpapers.press.princeton.edu/"
+    ]
+  },
+  "translation": {
+    "translators": [
+      {
+        "name": "Robert William Lawson",
+        "birth_year": "1890",
+        "death_year": "1960",
+        "notes": "British physicist, fellow of Institute of Physics"
+      }
+    ],
+    "translation_publication_date": "1920",
+    "translation_publication_country": "United Kingdom",
+    "first_publisher": "Methuen & Co.",
+    "first_publisher_location": "London",
+    "us_publication_date": "1920",
+    "us_publisher": "Henry Holt and Company",
+    "us_publisher_location": "New York",
+    "translation_notes": "Authorized translation by Einstein. Based on the 5th German edition. Includes translator's biographical sketch of Einstein, bibliography on relativity theory, and appendix on experimental confirmation of general relativity.",
+    "source_links": [
+      "https://www.gutenberg.org/ebooks/30155",
+      "https://einsteinpapers.press.princeton.edu/vol7-doc/327"
+    ]
+  },
+  "publisher": "Perry Dime Publications",
+  "publication_year": "2026",
+  "isbn": "",
+  "edition": "First Perry Dime Publications Edition",
+  "language": "English",
+  "page_count_estimate": 150,
+  "categories": [
+    "Science > Physics",
+    "Science > Relativity",
+    "Science > History & Philosophy",
+    "Education & Reference > Science"
+  ],
+  "keywords": [
+    "Einstein",
+    "relativity",
+    "physics",
+    "special relativity",
+    "general relativity",
+    "spacetime",
+    "gravity",
+    "cosmology",
+    "theoretical physics",
+    "popular science"
+  ],
+  "description": "Einstein's groundbreaking theories explained for general readers. Transforms our understanding of space, time, and gravity through clear, accessible prose by the master himself.",
+  "author_bio": "Albert Einstein (1879-1955) was a German-born theoretical physicist who developed the theory of relativity, one of the two pillars of modern physics (alongside quantum mechanics). His work is known for its influence on the philosophy of science and he is best known to the general public for his mass-energy equivalence formula E = mc².\n\nBorn in Ulm, Germany, Einstein showed exceptional mathematical ability from an early age. After graduating from the Swiss Federal Polytechnic School in Zurich in 1900, he worked at the Swiss Patent Office while developing his revolutionary theories. In 1905, his \"miracle year,\" he published four groundbreaking papers that would change physics forever, including his paper on special relativity.\n\nIn 1915, Einstein completed his general theory of relativity, which described gravity not as a force but as a consequence of the curvature of spacetime caused by mass and energy. This theory was confirmed by observations during the 1919 solar eclipse, making Einstein an international celebrity overnight.\n\nEinstein received the Nobel Prize in Physics in 1921 for his explanation of the photoelectric effect. He emigrated to the United States in 1933 to escape Nazi persecution and spent the remainder of his career at the Institute for Advanced Study in Princeton, New Jersey. Beyond his scientific achievements, Einstein was a passionate advocate for peace, civil rights, and international cooperation. His legacy extends far beyond physics, influencing philosophy, culture, and our fundamental understanding of the universe.",
+  "edition_notes": "This edition presents Einstein's own popular exposition of relativity theory, written to make his revolutionary ideas accessible to non-specialists. Originally published in German in 1916 and translated into English by Robert W. Lawson in 1920, this work demonstrates Einstein's remarkable ability to explain complex scientific concepts in clear, understandable terms. The book includes Einstein's explanations of both special and general relativity, along with mathematical appendices for readers seeking deeper understanding. All original diagrams and equations have been preserved to maintain the scientific integrity of Einstein's presentation.",
+  "source_file": "source/pg5001-images.html",
+  "kdp_ready_file": "kdp-ready.html",
+  "status": "ready",
+  "notes": "Source from Project Gutenberg eBook #5001. HTML format with extensive equations and diagrams (SVG images). Lawson translation. File size: 207.5 KB. 196 images (equations and diagrams) included."
+}

@@ -1,0 +1,8 @@
+# Python dependencies for Perry Dime website tools
+# Install with: pip install -r requirements.txt
+
+# Image processing
+Pillow>=10.0.0
+
+# HEIC/HEIF support
+pillow-heif>=0.13.0
