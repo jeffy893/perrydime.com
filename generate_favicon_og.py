@@ -72,15 +72,15 @@ def create_favicon_package():
     og_width, og_height = 1200, 630
     og_image = Image.new("RGB", (og_width, og_height), color="#c8af99")
     
-    # Calculate logo size (maintain aspect ratio, max 60% of canvas height)
-    logo_max_height = int(og_height * 0.6)
+    # Calculate logo size (maintain aspect ratio, max 85% of canvas height for better visibility)
+    logo_max_height = int(og_height * 0.85)
     logo_aspect = logo.width / logo.height
     logo_height = logo_max_height
     logo_width = int(logo_height * logo_aspect)
     
-    # If logo is too wide, scale by width instead
-    if logo_width > og_width * 0.8:
-        logo_width = int(og_width * 0.8)
+    # If logo is too wide, scale by width instead (allow up to 90% of width)
+    if logo_width > og_width * 0.9:
+        logo_width = int(og_width * 0.9)
         logo_height = int(logo_width / logo_aspect)
     
     # Resize logo
