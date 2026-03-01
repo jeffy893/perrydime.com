@@ -1,0 +1,52 @@
+{
+  "title": "Put Options on Loyalty",
+  "trim_size": "6x9",
+  "subtitle": "The Architecture of Certainty",
+  "author": "Jefferson Richards",
+  "original_publication_year": "2026",
+  "public_domain_status": "Copyright",
+  "original_work": {
+    "authors": [
+      {
+        "name": "Jefferson Richards",
+        "notes": "Founder of Richards Plus, LLC and Perry Dime Publications"
+      }
+    ],
+    "original_title": "Put Options on Loyalty",
+    "initial_publication_date": "2026",
+    "initial_publication_country": "United States",
+    "original_language": "English"
+  },
+  "publisher": "Perry Dime Publications",
+  "publication_year": "2026",
+  "isbn": "",
+  "edition": "First Edition",
+  "language": "English",
+  "page_count_estimate": 180,
+  "categories": [
+    "Business & Economics > Insurance",
+    "Philosophy > Ethics & Moral Philosophy",
+    "Social Science > Sociology",
+    "Business & Economics > Personal Finance"
+  ],
+  "keywords": [
+    "insurance",
+    "captive insurance",
+    "behavioral economics",
+    "loyalty",
+    "optionality",
+    "risk management",
+    "family governance",
+    "stochastic processes",
+    "semantic analysis",
+    "responsibility",
+    "mutual cooperation"
+  ],
+  "description": "How do you thrive in a system that doesn't care about your well-being? By applying the strict boundaries of insurance and risk management to your household, you can engineer mutual cooperation. Learn to build an antifragile Family Charter—a localized sanctuary where true loyalty and freedom authentically coexist.",
+  "author_bio": "<p>Jefferson Richards is the founder of Richards Plus, LLC and Perry Dime Publications. He brings together expertise in actuarial science, behavioral economics, linguistics, and systems engineering to explore the intersection of insurance, governance, and human cooperation.</p>\n<p>Drawing from years of experience in captive insurance modeling, natural language processing, and risk management, Jefferson has developed frameworks for understanding how structural boundaries—contracts, credit scores, and policy exclusions—shape human behavior and create the conditions for authentic loyalty.</p>\n<p>Previous works include <em>Survitality of the Synapse</em> and <em>Stockholm Forgiveness</em>, which laid the groundwork for the Responsibility Index and the mathematical models presented in this book.</p>",
+  "edition_notes": "This first edition presents a comprehensive framework for understanding how insurance, language, and mathematics combine to create the architecture of certainty. The book includes mathematical formulations using calculus, real analysis, and stochastic processes, along with practical applications through the Integral Mass Captive case study and the Family Charter framework.",
+  "source_file": "2026-02-27_POOL.md",
+  "kdp_ready_file": "kdp-ready.html",
+  "status": "in_progress",
+  "notes": "Original work with LaTeX mathematical notation. Requires MathJax/KaTeX for equation rendering in HTML/PDF output."
+}
