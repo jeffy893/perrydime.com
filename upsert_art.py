@@ -63,11 +63,11 @@ def scan_art_directory():
         'root': [],
         'subfolders': {}
     }
-    
+
     if not DEST_ART_DIR.exists():
         print(f"Error: {DEST_ART_DIR} does not exist")
         return art_structure
-    
+
     # Get all items in art directory
     for item in sorted(DEST_ART_DIR.iterdir()):
         if item.is_file() and item.suffix.lower() in ['.png', '.jpg', '.jpeg', '.webp']:
@@ -80,17 +80,26 @@ def scan_art_directory():
         elif item.is_dir():
             # Subfolder
             folder_name = item.name
-            art_structure['subfolders'][folder_name] = []
-            
+            images = []
+
             # Get images in subfolder
             for img in sorted(item.iterdir()):
                 if img.is_file() and img.suffix.lower() in ['.png', '.jpg', '.jpeg', '.webp']:
-                    art_structure['subfolders'][folder_name].append({
+                    images.append({
                         'filename': img.name,
                         'path': f"assets/img/art/{folder_name}/{img.name}",
                         'title': img.stem.replace('_', ' ').replace('-', ' ')
                     })
-    
+
+            # For Home_Art: descending order with St_Augustine pinned at top
+            if folder_name == 'Home_Art':
+                pinned = [i for i in images if 'St_Augustine' in i['filename']]
+                rest = [i for i in images if 'St_Augustine' not in i['filename']]
+                rest.sort(key=lambda x: x['filename'], reverse=True)
+                images = pinned + rest
+
+            art_structure['subfolders'][folder_name] = images
+
     return art_structure
 
 def format_folder_name(folder_name):
