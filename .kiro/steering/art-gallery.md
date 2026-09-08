@@ -5,15 +5,16 @@ inclusion: always
 # Art Gallery Implementation
 
 ## Overview
-The Art Gallery page displays 50 converted PNG images organized into three sections: General Collection (root), Female Form, and Home Art. Features responsive grid layout and interactive lightbox for full-size viewing.
+The Art Gallery page displays images organized into three sections: General Collection (root), Watering My Deserts, and Home Art. Features responsive grid layout and interactive lightbox for full-size viewing. A section may include an optional exposé rendered above its gallery grid.
+
+> **Note (2026-09-08):** The former "Female Form" section was retired. Its images were removed from both `source/art/` and `docs/assets/img/art/`, and replaced by the "Watering My Deserts" section — two Kahlil Gibran pieces (*On Marriage*, *On Love*) accompanied by an exposé on the change of heart behind the decision.
 
 ## Source Data
-- **Source Directory**: `docs/assets/img/art/`
-- **Total Images**: 50 PNG files
+- **Source Directory**: `source/art/` (copied to `docs/assets/img/art/`)
 - **Organization**:
-  - Root: 22 images (General Collection)
-  - Female_Form/: 14 images
-  - Home_Art/: 14 images
+  - Root: General Collection
+  - Watering_My_Deserts/: 2 images + `_description.md` exposé
+  - Home_Art/: Home Art collection
 
 ## Implementation Details
 
@@ -25,15 +26,16 @@ The Art Gallery page displays 50 converted PNG images organized into three secti
   - Generates gallery sections for each folder
   - Creates responsive grid layout
   - Adds lightbox data attributes
-- **Folder Name Formatting**: Converts `Female_Form` → "Female Form"
+- **Folder Name Formatting**: Converts `Watering_My_Deserts` → "Watering My Deserts"
 - **Image Titles**: Extracts from filename (removes extension, replaces underscores)
+- **Section Exposé**: If a subfolder contains a `_description.md`, its contents are rendered as an `.art-expose` block above that section's gallery grid. Lightweight markdown is supported: `## ` headings, blank-line-separated paragraphs, and a trailing signature line beginning with an em dash (`—`).
 
 ### HTML Structure: `docs/art.html`
 - **Layout**: Full page with header, hero, gallery sections, footer
 - **Sections**:
-  1. General Collection (22 images)
-  2. Female Form (14 images)
-  3. Home Art (14 images)
+  1. General Collection (root images)
+  2. Watering My Deserts (2 images + exposé)
+  3. Home Art
 - **Gallery Items**: `.art-item` containing:
   - `.art-link` with href and data-title
   - `<img>` with lazy loading
@@ -101,10 +103,12 @@ Root-level images including:
 - 00_IMG_0964.png
 - IMG_0943.png through IMG_0969.png
 
-### 2. Female Form (14 images)
-Subfolder: `Female_Form/`
-- IMG_0272.png through IMG_0289.png
-- Artistic figure studies
+### 2. Watering My Deserts (2 images + exposé)
+Subfolder: `Watering_My_Deserts/`
+- Gibran_On_Marriage.jpeg (Kahlil Gibran, *On Marriage*)
+- Gibran_On_Love.jpeg (Kahlil Gibran, *On Love*)
+- `_description.md`: exposé on retiring the former Female Form section
+- Icon: 🌿 (watering/desert folders)
 
 ### 3. Home Art (14 images)
 Subfolder: `Home_Art/`
@@ -148,16 +152,21 @@ Uses variables from `docs/assets/css/variables.css`:
 ## File Structure
 ```
 perrydime.com/
+├── source/
+│   └── art/                        (edit here, then run the script)
+│       ├── *.HEIC/*.jpeg            (root images)
+│       ├── Watering_My_Deserts/
+│       │   ├── Gibran_On_Marriage.jpeg
+│       │   ├── Gibran_On_Love.jpeg
+│       │   └── _description.md      (section exposé)
+│       └── Home_Art/
 ├── docs/
 │   ├── art.html (generated page)
 │   └── assets/
 │       ├── img/
-│       │   └── art/
-│       │       ├── *.png (22 root images)
-│       │       ├── Female_Form/ (14 images)
-│       │       └── Home_Art/ (14 images)
+│       │   └── art/                 (populated by the script from source/)
 │       ├── css/
-│       │   └── style.css (gallery styles)
+│       │   └── style.css (gallery styles + .art-expose)
 │       └── js/
 │           └── main.js (lightbox functionality)
 └── upsert_art.py (generation script)

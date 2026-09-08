@@ -53,6 +53,12 @@ def copy_art_files():
                         copied_count += 1
                     else:
                         skipped_count += 1
+                elif img.is_file() and img.name == '_description.md':
+                    # Section exposé/description: always refresh (small text file)
+                    dest_file = dest_subfolder / img.name
+                    shutil.copy2(img, dest_file)
+                    print(f"  ✓ Copied: {subfolder.name}/{img.name}")
+                    copied_count += 1
     
     print(f"\n  Files copied: {copied_count}")
     print(f"  Files skipped (already exist): {skipped_count}")
@@ -61,7 +67,8 @@ def scan_art_directory():
     """Scan art directory and organize images by folder"""
     art_structure = {
         'root': [],
-        'subfolders': {}
+        'subfolders': {},
+        'descriptions': {}
     }
 
     if not DEST_ART_DIR.exists():
@@ -100,6 +107,12 @@ def scan_art_directory():
 
             art_structure['subfolders'][folder_name] = images
 
+            # Optional per-section exposé/description (_description.md)
+            desc_file = item / '_description.md'
+            if desc_file.exists():
+                with open(desc_file, 'r', encoding='utf-8') as f:
+                    art_structure['descriptions'][folder_name] = f.read().strip()
+
     return art_structure
 
 def format_folder_name(folder_name):
@@ -108,6 +121,48 @@ def format_folder_name(folder_name):
     title = folder_name.replace('_', ' ')
     # Capitalize each word
     return title.title()
+
+def render_expose(soup, markdown_text):
+    """Render a section exposé from lightweight markdown into an .art-expose block.
+
+    Supports: '## ' headings, blank-line-separated paragraphs, and a trailing
+    signature line beginning with an em dash ('— ').
+    """
+    import re
+
+    wrapper = soup.new_tag('div', **{'class': 'art-expose'})
+
+    def append_inline(parent, text):
+        """Append text to parent, converting *emphasis* into <em> tags."""
+        for idx, chunk in enumerate(re.split(r'\*(.+?)\*', text)):
+            if not chunk:
+                continue
+            if idx % 2 == 1:
+                em = soup.new_tag('em')
+                em.string = chunk
+                parent.append(em)
+            else:
+                parent.append(chunk)
+
+    # Split into blocks on blank lines
+    blocks = [b.strip() for b in markdown_text.split('\n\n') if b.strip()]
+    for block in blocks:
+        # Collapse internal single newlines into spaces
+        text = ' '.join(line.strip() for line in block.splitlines())
+        if text.startswith('## '):
+            heading = soup.new_tag('h3', **{'class': 'expose-title'})
+            append_inline(heading, text[3:].strip())
+            wrapper.append(heading)
+        elif text.startswith('—') or text.startswith('&mdash;'):
+            sig = soup.new_tag('p', **{'class': 'expose-signature'})
+            append_inline(sig, text.replace('&mdash;', '—').strip())
+            wrapper.append(sig)
+        else:
+            para = soup.new_tag('p')
+            append_inline(para, text)
+            wrapper.append(para)
+
+    return wrapper
 
 def create_gallery_grid(soup, images):
     """Create a gallery grid with art items"""
@@ -223,17 +278,18 @@ def generate_art_html(art_structure):
         if images:
             # Determine icon based on folder name
             icon = '🖼️'
-            if 'female' in folder_name.lower():
-                icon = '👤'
-            elif 'home' in folder_name.lower():
+            if 'home' in folder_name.lower():
                 icon = '🏠'
+            elif 'desert' in folder_name.lower() or 'watering' in folder_name.lower():
+                icon = '🌿'
             
             tabs.append({
                 'id': folder_name.lower().replace('_', '-').replace(' ', '-'),
                 'label': format_folder_name(folder_name),
                 'icon': icon,
                 'count': len(images),
-                'images': images
+                'images': images,
+                'description': art_structure.get('descriptions', {}).get(folder_name)
             })
     
     # Create tab buttons
@@ -272,6 +328,11 @@ def generate_art_html(art_structure):
             'class': 'art-tab-content' + (' active' if i == 0 else ''),
             'id': f"{tab['id']}-content"
         })
+        
+        # Optional section exposé (rendered above the gallery grid)
+        if tab.get('description'):
+            expose = render_expose(soup, tab['description'])
+            tab_content.append(expose)
         
         # Gallery grid
         gallery_grid = create_gallery_grid(soup, tab['images'])
