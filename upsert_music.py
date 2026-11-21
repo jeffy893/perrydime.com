@@ -15,6 +15,7 @@ SCRIPT_DIR = Path(__file__).parent.resolve()
 PRODUCTIONS_DIR = SCRIPT_DIR / "source/productions"
 MELOTATIONS_SOURCE = SCRIPT_DIR / "source/productions-melotations"
 MELOTATIONS_DEST = SCRIPT_DIR / "docs/assets/pdfs/melotations"
+AUDIO_DEST_ROOT = SCRIPT_DIR / "docs/assets/audio"
 OUTPUT_FILE = SCRIPT_DIR / "docs/music.html"
 TEMPLATE_FILE = SCRIPT_DIR / "docs/index.html"
 
@@ -23,6 +24,57 @@ TRACK_TABS = [
     ("Optionality Album", "optionality-album", "Optionality Album", "💿", "List-of-SoundCloud-Embed_Optionality.html"),
     ("Proofs of Concept", "proofs-of-concept", "Proofs of Concept", "🎵", "List-of-SoundCloud-Embed_Proofs.html"),
 ]
+
+# Tabs built from local MP3 files: (subfolder_name, tab_id, tab_label, tab_icon)
+# Files are named "NN_Artist_Track-Name.mp3": NN sets the order, and the text after
+# "Artist_" (dashes replaced with spaces) is the displayed title.
+AUDIO_TABS = [
+    ("Christmas", "christmas", "Christmas", "🎄"),
+]
+
+# Optional intro block shown above a tab's grid (kept here so regeneration preserves it)
+ALBUM_DESCRIPTIONS = {
+    "optionality-album": """                    <div class="album-description" style="max-width: 760px; margin: 0 auto 2.5rem; padding: 1.75rem 2rem; border-left: 4px solid var(--accent-color, #ff5500); background: rgba(255, 85, 0, 0.04); border-radius: 0 8px 8px 0;">
+                        <p style="margin: 0 0 0.35rem; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7;">Jan 2021 – Mar 2026</p>
+                        <h3 style="margin: 0 0 0.75rem; font-size: 1.4rem;">Optionality: An Experimental Album</h3>
+                        <p style="margin: 0 0 1rem; font-style: italic; opacity: 0.85;">An honest depiction of the Optionality differential and resultant adaptation with Usury.</p>
+                        <p style="margin: 0; line-height: 1.7;">A four-year journey bridging written poetry and musical composition. Prototyped tracks with MIDI, Ableton, and vocal arrangements, then validated via SoundCloud engagement data. Used Zipf's Law distribution in listener behavior to select the top 11 tracks. Nested the lead track in raw form at the axis point while leveraging Suno AI for production—exploring human intent meets generative technology. With a kicker leaning into Uncle YahYoKah's grace.</p>
+                    </div>""",
+}
+
+
+def load_audio_tabs():
+    """Copy local MP3s to docs/assets/audio/<tab_id>/ and build tab data."""
+    tabs = []
+    for subfolder_name, tab_id, tab_label, tab_icon in AUDIO_TABS:
+        src_dir = PRODUCTIONS_DIR / subfolder_name
+        if not src_dir.exists():
+            print(f"  Warning: {src_dir} not found, skipping")
+            continue
+        dest_dir = AUDIO_DEST_ROOT / tab_id
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        tracks = []
+        for mp3 in sorted(src_dir.glob("[0-9][0-9]_*.mp3")):
+            dest = dest_dir / mp3.name
+            if not dest.exists() or dest.stat().st_size != mp3.stat().st_size:
+                shutil.copy2(mp3, dest)
+                print(f"  ✓ Copied: {mp3.name}")
+            parts = mp3.stem.split('_', 2)
+            number = parts[0]
+            title = (parts[2] if len(parts) == 3 else parts[-1]).replace('-', ' ')
+            tracks.append({
+                'id': f"{tab_id}-{number}",
+                'title': title,
+                'full_embed': (
+                    f'<audio controls preload="none">'
+                    f'<source src="assets/audio/{tab_id}/{mp3.name}" type="audio/mpeg"/>'
+                    f'Your browser does not support audio playback.</audio>'
+                ),
+            })
+        print(f"  Found {len(tracks)} tracks in {subfolder_name}")
+        tabs.append({'tab_id': tab_id, 'tab_label': tab_label, 'tab_icon': tab_icon, 'tracks': tracks})
+    return tabs
+
 
 def copy_melotations():
     """Copy melotation PDFs from source to docs"""
@@ -154,6 +206,7 @@ def create_music_page(track_tabs, melotations, template_file, output_file):
             ])
             tab_contents.append(
                 f'''                <div class="music-tab-content{active_class}" id="{tab['tab_id']}-content">
+{ALBUM_DESCRIPTIONS.get(tab['tab_id'], '')}
                     <div class="music-grid">
 {tracks_embeds}
                     </div><!-- end music-grid -->
@@ -243,6 +296,8 @@ def main():
     # Load tracks from subfolders
     print(f"\n2. Reading SoundCloud embeds from subfolders in: {PRODUCTIONS_DIR}")
     track_tabs = load_tracks_from_subfolders()
+    print("\n   Reading local MP3 albums...")
+    track_tabs += load_audio_tabs()
 
     if not track_tabs:
         print("No track tabs found!")

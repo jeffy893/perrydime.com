@@ -849,6 +849,11 @@ section h2 {
     border: none;
 }
 
+.music-item audio {
+    display: block;
+    width: calc(100% - 2 * var(--spacing-md));
+    margin: var(--spacing-md) var(--spacing-md) 0;
+}
 .music-info {
     padding: var(--spacing-lg);
     background: linear-gradient(to bottom, var(--color-bg-subtle), var(--color-white));
