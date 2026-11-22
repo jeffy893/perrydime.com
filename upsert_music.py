@@ -159,7 +159,7 @@ def load_tracks_from_subfolders():
 # by build_soul_beat.py: (folder name, title, description)
 SCORE_MELOTATIONS = [
     ("soul-beat", "Soul Beat", "The beat that has rested in my soul throughout my life. It comes out when I drum my hands on my chest, in bed or at my desk, while being skooled."),
-    ("shareholder-son", "Shareholder Son", "In a dream, I flew a spaceship past the lesser gods to Doc Zeus at the port of a goddess. While he courted, he asked me to take the helm. The chant: \"My shareholder son, I give my chair to you.\""),
+    ("shareholder-son", "Shareholder Son", "In a dream, I swam past the lesser gods in a spaceship to dock Zeus at the port of a goddess. While he courted, he asked me to take the helm."),
     ("artificial-intercourse", "Artificial_Intercourse", "Guitar music from the Survitality book."),
     ("buried-intercourse", "Buried_Intercourse", "Guitar music from the Survitality book, recomposed from my 2022 recording of the piece, including its slow chordal intro."),
     ("natural-intercourse", "Natural_Intercourse", "Guitar music from the Survitality book, inspired by Led Zeppelin's \"Since I've Been Loving You.\""),
