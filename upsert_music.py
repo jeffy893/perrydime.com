@@ -264,25 +264,20 @@ def create_music_page(track_tabs, melotations, template_file, output_file):
         )
 
         # Melotations tab content
-        melotations_cards = '\n'.join([
-            f'''                <div class="melotation-card">
-                    <div class="melotation-icon">🎼</div>
-                    <div class="melotation-content">
-                        <h4>{melotation['title']}</h4>
-                        <a href="{melotation['path']}" target="_blank" class="melotation-link">View Sheet Music (PDF)</a>
-                    </div>
+        melotations_embeds = '\n'.join([
+            f'''                <div class="melotation-pdf">
+                    <h4>{melotation['title']}</h4>
+                    <iframe class="melotation-pdf-frame" src="{melotation['path']}#view=FitH" title="{melotation['title']} (PDF)" loading="lazy"></iframe>
+                    <p class="melotation-pdf-link"><a href="{melotation['path']}" target="_blank" class="melotation-link">Open the PDF in a new tab</a></p>
                 </div>''' for melotation in melotations
         ])
         score_cards = build_score_cards()
         tab_contents.append(
             f'''                <div class="music-tab-content" id="melotations-content">
-                    <div class="melotations-grid">
-{melotations_cards}
-                    </div><!-- end melotations-grid -->
 {score_cards}
+{melotations_embeds}
                 </div>'''
         )
-
         tab_buttons_html = '\n'.join(tab_buttons)
         tab_contents_html = '\n'.join(tab_contents)
 
