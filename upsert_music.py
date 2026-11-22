@@ -165,6 +165,11 @@ SCORE_MELOTATIONS = [
     ("natural-intercourse", "Natural_Intercourse", "Guitar music from the Survitality book, inspired by Led Zeppelin's \"Since I've Been Loving You.\""),
 ]
 SCORE_ASSET_DIR = "assets/melotations"
+DEFAULT_HINT = "Press play to hear it rendered from the notation."
+# Cards whose audio is a real recording, not rendered from the notation
+SCORE_HINTS = {
+    "shareholder-son": "Press play to hear the original recording.",
+}
 
 
 def build_score_cards():
@@ -181,7 +186,7 @@ def build_score_cards():
                     <h4>{title}</h4>
                     <p>{description}</p>
                     <img src="{SCORE_ASSET_DIR}/{folder}/{folder}.svg" alt="Sheet music for {title}" loading="lazy"/>
-                    <p class="melotation-score-hint">Press play to hear it rendered from the notation.</p>
+                    <p class="melotation-score-hint">{SCORE_HINTS.get(folder, DEFAULT_HINT)}</p>
                     <audio controls="" preload="none">
                         <source src="{SCORE_ASSET_DIR}/{folder}/{folder}.mp3" type="audio/mpeg"/>
                         Your browser does not support audio playback.

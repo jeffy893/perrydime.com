@@ -4,7 +4,8 @@ Builds the "Shareholder Son" vocal melotation: sheet music with lyrics (SVG, via
 and an MP3 sung from that sheet music.
 
 The melody was reverse-engineered from a voice recording (pitch tracking plus syllable timing).
-The MP3 is made from the notes below, not from the recording: each syllable is spoken by the
+By default the MP3 is Perry's own recording, trimmed to the sung phrase (trim_recording).
+With --synth, the MP3 is made from the notes below instead: each syllable is spoken by the
 macOS speech voice, then re-pitched and stretched to the written note with PSOLA
 (pitch-synchronous overlap-add), which keeps the vowel colour while changing pitch and length.
 
@@ -15,6 +16,7 @@ Outputs go to docs/assets/melotations/shareholder-son/
 Requires: verovio, numpy, ffmpeg (with libmp3lame), and the macOS `say` command.
 """
 import subprocess
+import sys
 import tempfile
 import wave
 from pathlib import Path
@@ -271,6 +273,23 @@ def build_mp3(mp3_path):
                         str(mp3_path)], check=True)
 
 
+RECORDING = Path(__file__).parent.resolve() / "source/productions-melotations/shareholder-son/shareholder-son.m4a"
+# The sung phrase runs from about 0.43 s ("my") to 5.22 s (end of "you"); the taps after it are cut.
+TRIM_START, TRIM_END = 0.33, 5.27
+
+
+def trim_recording(mp3_path):
+    length = TRIM_END - TRIM_START
+    subprocess.run(
+        ["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{TRIM_START}", "-t", f"{length:.2f}",
+         "-i", str(RECORDING),
+         "-af", f"afade=t=in:d=0.08,afade=t=out:st={length - 0.12:.2f}:d=0.12,loudnorm=I=-16:TP=-1.5",
+         "-ar", "44100", "-ac", "1", "-codec:a", "libmp3lame", "-b:a", "128k",
+         "-metadata", f"title={TITLE}", "-metadata", "artist=Perry Dime",
+         str(mp3_path)],
+        check=True)
+
+
 def main():
     for bar in BARS:
         if sum(n[1] for n in bar) != 16:
@@ -278,7 +297,10 @@ def main():
     out = OUT_ROOT / SLUG
     out.mkdir(parents=True, exist_ok=True)
     render_svg(out / f"{SLUG}.svg")
-    build_mp3(out / f"{SLUG}.mp3")
+    if "--synth" in sys.argv:
+        build_mp3(out / f"{SLUG}.mp3")        # sung by the macOS voice from the notation
+    else:
+        trim_recording(out / f"{SLUG}.mp3")   # Perry's own recording, trimmed to the sung phrase
     print(f"{SLUG}: written to {out}")
 
 
