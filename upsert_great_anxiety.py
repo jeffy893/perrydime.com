@@ -3,7 +3,8 @@
 Inserts the "The Great Anxiety" feature (read or listen to the audiobook) into the
 home page and the publications page.
 
-The section sits right after each page's hero and is wrapped in marker comments, so running
+On the home page the section sits between Creative Expressions and Featured Works; on the
+publications page it sits right after the hero. It is wrapped in marker comments, so running
 this again replaces it instead of adding a second copy. upsert_publications.py calls it after
 regenerating publications.html.
 
@@ -65,19 +66,21 @@ SECTION = f"""{START}
    </section>
    {END}"""
 
-BLOCK_RE = re.compile(re.escape(START) + r".*?" + re.escape(END), re.S)
-HERO_END_RE = re.compile(r'(<section class="hero">.*?</section>)', re.S)
+BLOCK_RE = re.compile(r"\n?\s*" + re.escape(START) + r".*?" + re.escape(END), re.S)
+# Where the section goes: on the home page after "Creative Expressions" (the overview section,
+# so it sits above Featured Works); on other pages right after the hero.
+HERO_END_RE = re.compile(r'<section class="hero">.*?</section>', re.S)
+OVERVIEW_END_RE = re.compile(r'<section class="overview">.*?</section>', re.S)
 
 
 def upsert(page):
     html = page.read_text(encoding="utf-8")
-    if START in html:
-        html = BLOCK_RE.sub(lambda m: SECTION, html, count=1)
-    else:
-        m = HERO_END_RE.search(html)
-        if not m:
-            raise RuntimeError(f"no hero section found in {page}")
-        html = html[:m.end()] + "\n   " + SECTION + html[m.end():]
+    html = BLOCK_RE.sub("", html, count=1)          # remove the old copy, then re-insert
+    anchor = OVERVIEW_END_RE if page.name == "index.html" else HERO_END_RE
+    m = anchor.search(html)
+    if not m:
+        raise RuntimeError(f"no anchor section found in {page}")
+    html = html[:m.end()] + "\n   " + SECTION + html[m.end():]
     page.write_text(html, encoding="utf-8")
     print(f"  The Great Anxiety feature written to {page.name}")
 
