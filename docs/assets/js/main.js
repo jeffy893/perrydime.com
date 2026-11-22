@@ -288,7 +288,7 @@
     // ========================================
     
     function initArtTabs() {
-        const tabButtons = document.querySelectorAll('.art-tab');
+        const tabButtons = document.querySelectorAll('.art-tab[data-tab]');
         const tabContents = document.querySelectorAll('.art-tab-content');
         
         if (tabButtons.length === 0) {

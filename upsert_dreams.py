@@ -16,6 +16,78 @@ OUTPUT_FILE = BASE_DIR / "docs/dreams.html"
 TEMPLATE_FILE = BASE_DIR / "docs/music.html"
 PDF_DEST_DIR = BASE_DIR / "docs/assets/pdfs/dreams"
 
+
+# Dream art: compressed JPGs (full + thumbnail) are generated from source/dreams/dream-art
+ART_SRC_DIR = BASE_DIR / "source/dreams/dream-art"
+ART_DEST_DIR = BASE_DIR / "docs/assets/img/dreams"
+
+ALLEGORIES_TABS_HTML = """
+<div class="art-tabs">
+  <a class="art-tab allegories-tab" href="https://wiki.richards.systems/pages/Allegories_17760257.html" target="_blank" rel="noopener">
+    <span class="tab-icon">📜</span>
+    <span class="tab-label">Allegories</span>
+    <span class="tab-count">↗</span>
+  </a>
+</div>
+"""
+
+DREAM_STORY_HTML = """
+<article class="dream-story-panel">
+  <h3 class="dream-story-title">2014 Cosmos Introduction</h3>
+  <p class="dream-story-meta">Yuma, AZ · 2014</p>
+  <figure class="dream-story-figure">
+    <img src="assets/img/dreams/alien-librarian.jpg" alt="The alien librarian" loading="lazy"/>
+  </figure>
+  <p>I spent a week in the summer sun bathing with no clothes, fasting from food, but staying hydrated.</p>
+  <p>On the seventh day, I drove out to the remote parts of the Colorado River, and hiked through a wash till finding a suitable hill.</p>
+  <p>My cousin had told me to not stay in one place too long, or the scorpions would be attracted to my heat.</p>
+  <p>I meditated, cross-legged, looking straight up into the cosmos, until the cosmos recognized me.</p>
+  <p>A giant white moth flew up to me. A burro whinnied in the distance.</p>
+  <p>Amongst the most fear and awe I had ever felt, I fell asleep:</p>
+  <blockquote>In my dream, I sat as a tiny man, swinging my feet on a tiny ledge in a giant library with a giant and long-bodied alien librarian. The librarian brought a book down to my face - from which I could only make out one line. This one line that I read from the alien language, I was told, would take books and books of english mathematics and artificial computer languages to spell out.</blockquote>
+  <p>I woke abruptly, and knew my introduction was complete…</p>
+  <p>When back down in the wash, headed towards my car, I turned around, and my headlamp lit up ~20 eyes of coyotes… I quickened my pace, while rotating, to validate I was staying ahead of the approaching eyes.</p>
+  <p>I made it to the car, drove home, had a sandwich,…, and went to bed.</p>
+</article>
+"""
+
+
+def append_html(parent, html):
+    """Parse an HTML fragment and append its nodes to parent"""
+    for el in list(BeautifulSoup(html, 'html.parser').contents):
+        parent.append(el)
+
+
+def scan_dream_art():
+    """Compress dream art PNGs to JPG (full + thumb) and return entries"""
+    from PIL import Image
+    items = []
+    if not ART_SRC_DIR.exists():
+        return items
+    ART_DEST_DIR.mkdir(parents=True, exist_ok=True)
+    for src in sorted(ART_SRC_DIR.glob("*.png")):
+        full = ART_DEST_DIR / f"{src.stem}.jpg"
+        thumb = ART_DEST_DIR / f"{src.stem}-thumb.jpg"
+        if not full.exists() or full.stat().st_mtime < src.stat().st_mtime:
+            im = Image.open(src).convert("RGB")
+            for dest, size, quality in ((full, 1800, 82), (thumb, 800, 80)):
+                c = im.copy()
+                c.thumbnail((size, size), Image.LANCZOS)
+                c.save(dest, "JPEG", quality=quality, optimize=True, progressive=True)
+        items.append({'title': src.stem.replace('-', ' ').title(), 'stem': src.stem})
+        print(f"  ✓ Dream art: {src.name}")
+    return items
+
+
+def dream_art_item_html(art):
+    return (
+        f'<figure class="dream-art-item">'
+        f'<a class="art-link" data-title="{art["title"]}" href="assets/img/dreams/{art["stem"]}.jpg">'
+        f'<img alt="{art["title"]}" loading="lazy" src="assets/img/dreams/{art["stem"]}-thumb.jpg"/>'
+        f'</a><figcaption>{art["title"]}</figcaption></figure>'
+    )
+
+
 def parse_dream_filename(filename):
     """Parse dream PDF filename to extract date and title"""
     # Expected format: YYYY-MM-DD_Title_With_Underscores.pdf
@@ -127,24 +199,44 @@ def generate_dreams_html(dreams):
         container = soup.new_tag('div', **{'class': 'container'})
         music_section.append(container)
     
-    # Add intro
+    # Intro
     intro_h2 = soup.new_tag('h2')
-    intro_h2.string = "Dream Journals"
+    intro_h2.string = "Dreams"
     container.append(intro_h2)
-    
+
     intro_p = soup.new_tag('p', **{'class': 'section-intro'})
-    intro_p.string = "A collection of handwritten dream descriptions and reflections, documenting the subconscious narrative."
+    intro_p.string = "Dream stories, dream art, and handwritten dream journals documenting the subconscious narrative."
     container.append(intro_p)
-    
-    # Generate dreams grid
+
+    # Allegories link, styled like the tabs on other pages
+    append_html(container, ALLEGORIES_TABS_HTML)
+
+    # Dream story panel
+    append_html(container, DREAM_STORY_HTML)
+
+    # Dream art gallery
+    art_h2 = soup.new_tag('h2', **{'class': 'dream-subhead'})
+    art_h2.string = "Dream Art"
+    container.append(art_h2)
+    art_gallery = soup.new_tag('div', **{'class': 'dream-art-gallery'})
+    for art in scan_dream_art():
+        append_html(art_gallery, dream_art_item_html(art))
+    container.append(art_gallery)
+
+    # Dream journals go last
+    journals_h2 = soup.new_tag('h2', **{'class': 'dream-subhead'})
+    journals_h2.string = "Dream Journals"
+    container.append(journals_h2)
+
+    journals_p = soup.new_tag('p', **{'class': 'section-intro'})
+    journals_p.string = "A collection of handwritten dream descriptions and reflections."
+    container.append(journals_p)
+
     dreams_grid = soup.new_tag('div', **{'class': 'dreams-grid'})
-    
     for dream in dreams:
-        dream_card = create_dream_card(soup, dream)
-        dreams_grid.append(dream_card)
-    
+        dreams_grid.append(create_dream_card(soup, dream))
     container.append(dreams_grid)
-    
+
     # Write output
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         f.write(soup.prettify())
