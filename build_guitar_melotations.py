@@ -79,36 +79,75 @@ NATURAL = [
     "D4:4 D#4:4 E4:4",
 ] + ["r:12"] * 18
 
-# "Buried_Intercourse" (2/4). The source image is small and the clusters are dense, so this is a
-# best-effort reading: rhythms and the repeating figures are reliable, a few accidentals are guesses.
-B_OPEN = "r:2 [D5 F5]:2 [C#5 D5]:2 [G#4 D5]:2"
-B_DG = "D5:2 G#4:2 D5:2 G#4:2"
-B_TURN = "r:2 [G#4 D5]:2 [B4 D5]:2 [G#4 A4]:2"
-B_AG = "A#4:2 G4:2 A#4:2 E#4:2"
-B_AE1 = "A#4:2 E#4:2 A#4:2 E4:2"
-B_AE2 = "A#4:2 E4:2 A#4:2 E4:2"
-B_RISE = "r:2 E4:2 E#4:2 G4:2"
-B_AA = "A#4:2 G4:2 A#4:2 A#4:2"
-B_CA = "C5:2 A4:2 C5:2 A#4:2"
-
+# "Buried_Intercourse" (2/4), recomposed from Perry's 2022 guitar recording
+# (source/productions-melotations/2022-04-20_Survitality_BI.mp3): onsets and pitches were
+# detected from the audio, quantized to an eighth-note grid (one eighth = 0.39 s, about 77 BPM)
+# and written an octave above sounding pitch. The opening bars are the slow chordal intro of
+# the recording (G, F#, E minor and a B7 colour); the main figure is
+# [D F] -> [C Eb] -> [Bb D] followed by Bb-D and Bb-G-F# lines, which the printed score showed
+# with sharps. Written in Bb major / G minor.
 BURIED = [
-    # 1-6
-    B_OPEN, B_DG, B_OPEN, B_DG, B_TURN, B_AG,
-    # 7-12
-    B_AE1, B_AE2, B_OPEN, B_DG, "r:2 [C#5 D5]:2 [D5 F5]:2 [G#4 D5]:2", B_DG,
-    # 13-19
-    B_TURN, B_AG, B_AE1, "A#4:2 E4:2 [G#4 A4]:2 E4:2", B_RISE, B_AA, B_CA,
-    # 20-26
-    B_DG, B_RISE, B_AA, B_CA, B_DG, "r:2 [G#4 D5]:2 [C#5 D5]:2 [D5 F5]:2", "F5:2 D5:2 F5:2 D5:2",
-    # 27-32
-    "F5:2 [E#5 G5]:2 [D5 F5]:2 [C#5 D5]:2", "D#5:2 C5:2 D#5:2 C5:2",
-    "D#5:2 [D5 F5]:2 [C#5 D5]:2 [G#4 D5]:2", "D5:2 G#4:2 [B4 D5]:2 [E4 A#4]:2~",
-    "[E4 A#4]:2 [A#4 D5]:4 [B4 D5]:2~", "[B4 D5]:4 [E4 A#4]:2 [E4 A#4]:2",
-    # 33-39
-    B_OPEN, B_DG, B_OPEN, B_DG, "r:2 [G#4 D5]:2 [B4 D5]:2 [G#4 A4]:2~",
-    "[G#4 A4]:4 r:2 [E4 A4]:2~", "[E4 A4]:4 r:2 [D4 A#4]:2",
-    # 40-41
-    "r:8", "r:8",
+    "[B5 D6]:4 G5:4~",
+    "G5:8~",
+    "G5:6 F#5:2",
+    "[C5 G5]:4 F#5:4~",
+    "F#5:8~",
+    "F#5:4 [E5 G5]:2 F#5:2",
+    "[E5 G5]:4 G5:4",
+    "[E5 G5]:8~",
+    "[E5 G5]:2 [D5 F#5]:2 [E5 G5]:2 [D5 F#5]:2~",
+    "[D5 F#5]:8~",
+    "[D5 F#5]:6 [D5 F5]:2",
+    "[C5 Eb5]:2 [Bb4 D5]:2 D5:2 Bb4:2",
+    "D5:2 Bb4:2 A4:2 [D5 F5]:2",
+    "[C5 Eb5]:2 [Bb4 D5]:4 Bb4:2~",
+    "Bb4:2 Bb4:4 Bb4:2",
+    "[A4 C5]:2 [G4 Bb4]:2 Bb4:2 G4:2",
+    "Bb4:2 F#4:2 Bb4:4",
+    "[Ab4 Bb4]:2 F4:2 Bb4:4~",
+    "Bb4:8",
+    "[D5 F5]:2 Eb5:2 [Bb4 D5]:2 D5:2",
+    "Bb4:4 Bb4:4",
+    "[D5 F5]:2 C5:2 [Bb4 D5]:4~",
+    "[Bb4 D5]:4 Bb4:4",
+    "Bb4:2 A4:2 [G4 Bb4]:2 Bb4:2",
+    "G4:2 Bb4:2 F#4:2 Bb4:2",
+    "F#4:4 F4:2 Bb4:2~",
+    "Bb4:4 F4:4",
+    "F4:2 F#4:2 G4:4",
+    "G4:4 G4:4",
+    "A4:2 G4:2 Bb4:2 D5:2~",
+    "D5:4 Bb4:4",
+    "F4:2 F#4:2 G4:2 Bb4:2",
+    "G4:2 Bb4:2 A4:2 C5:2",
+    "A4:2 [Ab4 C5]:2 Bb4:4~",
+    "Bb4:2 D5:2 Bb4:4",
+    "[Bb4 D5]:2 [C5 Eb5]:2 [D5 F5]:4~",
+    "[D5 F5]:6 G4:2~",
+    "G4:4 [Eb5 G5]:2 [D5 F5]:2",
+    "[C5 Eb5]:8~",
+    "[C5 Eb5]:2 A4:2 [D5 F5]:2 [B4 Eb5]:2",
+    "[Bb4 D5]:6 [A4 C5]:2",
+    "[G4 Bb4]:2 A4:2 Bb4:2 A4:2",
+    "[A4 C5]:6 [G4 Bb4]:2",
+    "[G4 Bb4]:4 Bb4:2 C5:2~",
+    "C5:2 [D5 F5]:6~",
+    "[D5 F5]:6 [Eb5 G5]:2",
+    "Ab4:4 [C5 Eb5]:4~",
+    "[C5 Eb5]:6 [D5 F5]:2",
+    "[C5 Eb5]:2 [Bb4 D5]:6",
+    "A4:2 G4:4 [Bb4 D5]:2~",
+    "[Bb4 D5]:2 [A4 C5]:6",
+    "[G4 Bb4]:2 [G4 Bb4]:4 D5:2",
+    "[B4 Eb5]:2 D5:2 D5:2 Bb4:2",
+    "D5:2 Bb4:2 A4:2 [D5 F5]:2",
+    "C5:2 [Bb4 D5]:2 D5:2 Bb4:2~",
+    "Bb4:2 Bb4:4 Bb4:2",
+    "C5:2 [G4 Bb4]:6~",
+    "[G4 Bb4]:2 [F4 A4]:6",
+    "Bb4:2 A4:2 Bb4:4~",
+    "Bb4:8~",
+    "Bb4:4 r:4",
 ]
 
 PIECES = [
@@ -116,7 +155,7 @@ PIECES = [
         "slug": "buried-intercourse",
         "title": "Buried_Intercourse",
         "bars": BURIED,
-        "beats": 2, "beat_type": 4, "bpm": 92, "pickup": False,
+        "beats": 2, "beat_type": 4, "bpm": 77, "pickup": False, "fifths": -2,
     },
     {
         "slug": "artificial-intercourse",
@@ -172,7 +211,19 @@ def parse_piece(piece):
 
 
 # -------------------------------------------------------------- MusicXML
-TYPE = {1: "16th", 2: "eighth", 4: "quarter", 8: "half", 12: "half", 16: "whole"}
+FLAT_ORDER = "BEADGCF"
+
+
+def key_alter(fifths, step):
+    """Alteration the key signature gives a step (only flat keys are used here)."""
+    if fifths < 0 and step in FLAT_ORDER[:-fifths]:
+        return -1
+    if fifths > 0 and step in "FCGDAEB"[:fifths]:
+        return 1
+    return 0
+
+TYPE = {1: "16th", 2: "eighth", 3: "eighth", 4: "quarter", 6: "quarter", 8: "half", 12: "half", 16: "whole"}
+DOTTED = {3, 6, 12}
 
 
 def musicxml(piece, bars):
@@ -189,7 +240,7 @@ def musicxml(piece, bars):
         num = i + 1
         x.append(f'<measure number="{num}"{implicit}>')
         if i == 0:
-            x.append(f'<attributes><divisions>4</divisions><key><fifths>0</fifths></key>'
+            x.append(f'<attributes><divisions>4</divisions><key><fifths>{piece.get("fifths", 0)}</fifths></key>'
                      f'<time><beats>{beats}</beats><beat-type>{piece["beat_type"]}</beat-type></time>'
                      '<clef><sign>G</sign><line>2</line><clef-octave-change>-1</clef-octave-change></clef>'
                      '</attributes>')
@@ -214,12 +265,12 @@ def musicxml(piece, bars):
                 if whole_rest:
                     x.append(f'<note><rest measure="yes"/><duration>{n["dur"]}</duration></note>')
                 else:
-                    x.append(f'<note><rest/><duration>{n["dur"]}</duration><type>{TYPE[n["dur"]]}</type></note>')
+                    x.append(f'<note><rest/><duration>{n["dur"]}</duration><type>{TYPE[n["dur"]]}</type>{"<dot/>" if n["dur"] in DOTTED else ""}</note>')
                 continue
             for k, p in enumerate(n["pitches"]):
                 step, alt, octv = parse_pitch(p)
                 key = (step, octv)
-                cur = state.get(key, 0)
+                cur = state.get(key, key_alter(piece.get("fifths", 0), step))
                 show = None
                 if not n["tie_stop"] and alt != cur:
                     show = {1: "sharp", -1: "flat", 0: "natural"}[alt]
@@ -237,7 +288,7 @@ def musicxml(piece, bars):
                 if n["tie_start"]:
                     s += '<tie type="start"/>'
                 s += f'<type>{TYPE[n["dur"]]}</type>'
-                if n["dur"] == 12:
+                if n["dur"] in DOTTED:
                     s += '<dot/>'
                 if show:
                     s += f'<accidental>{show}</accidental>'
