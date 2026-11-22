@@ -158,7 +158,7 @@ def load_tracks_from_subfolders():
 # Melotations shown as on-page sheet music (SVG) with a playable MP3, generated
 # by build_soul_beat.py: (folder name, title, description)
 SCORE_MELOTATIONS = [
-    ("soul-beat", "Soul Beat", "A drum groove in 4/4. Press play to hear it rendered from the notation."),
+    ("soul-beat", "Soul Beat", "The beat that has rested in my soul throughout my life. It comes out when I drum my hands on my chest, in bed or at my desk, while being skooled. Press play to hear it rendered from the notation."),
 ]
 SCORE_ASSET_DIR = "assets/melotations"
 
