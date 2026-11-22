@@ -2004,3 +2004,11 @@ section h2 {
     width: 100%;
     max-width: 500px;
 }
+.melotation-score .melotation-score-hint {
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-top: var(--spacing-md);
+}

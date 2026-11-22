@@ -158,7 +158,7 @@ def load_tracks_from_subfolders():
 # Melotations shown as on-page sheet music (SVG) with a playable MP3, generated
 # by build_soul_beat.py: (folder name, title, description)
 SCORE_MELOTATIONS = [
-    ("soul-beat", "Soul Beat", "The beat that has rested in my soul throughout my life. It comes out when I drum my hands on my chest, in bed or at my desk, while being skooled. Press play to hear it rendered from the notation."),
+    ("soul-beat", "Soul Beat", "The beat that has rested in my soul throughout my life. It comes out when I drum my hands on my chest, in bed or at my desk, while being skooled."),
 ]
 SCORE_ASSET_DIR = "assets/melotations"
 
@@ -177,6 +177,7 @@ def build_score_cards():
                     <h4>{title}</h4>
                     <p>{description}</p>
                     <img src="{SCORE_ASSET_DIR}/{folder}/{folder}.svg" alt="Sheet music for {title}" loading="lazy"/>
+                    <p class="melotation-score-hint">Press play to hear it rendered from the notation.</p>
                     <audio controls="" preload="none">
                         <source src="{SCORE_ASSET_DIR}/{folder}/{folder}.mp3" type="audio/mpeg"/>
                         Your browser does not support audio playback.
