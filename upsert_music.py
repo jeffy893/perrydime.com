@@ -155,6 +155,36 @@ def load_tracks_from_subfolders():
     return all_tabs
 
 
+# Melotations shown as on-page sheet music (SVG) with a playable MP3, generated
+# by build_soul_beat.py: (folder name, title, description)
+SCORE_MELOTATIONS = [
+    ("soul-beat", "Soul Beat", "A drum groove in 4/4. Press play to hear it rendered from the notation."),
+]
+SCORE_ASSET_DIR = "assets/melotations"
+
+
+def build_score_cards():
+    """Cards that display sheet music inline with an audio player."""
+    cards = []
+    for folder, title, description in SCORE_MELOTATIONS:
+        base = SCRIPT_DIR / "docs" / SCORE_ASSET_DIR / folder
+        svg, mp3 = base / f"{folder}.svg", base / f"{folder}.mp3"
+        if not (svg.exists() and mp3.exists()):
+            print(f"  Warning: score assets missing for {folder}, run build_soul_beat.py")
+            continue
+        cards.append(
+            f'''                <div class="melotation-score">
+                    <h4>{title}</h4>
+                    <p>{description}</p>
+                    <img src="{SCORE_ASSET_DIR}/{folder}/{folder}.svg" alt="Sheet music for {title}" loading="lazy"/>
+                    <audio controls="" preload="none">
+                        <source src="{SCORE_ASSET_DIR}/{folder}/{folder}.mp3" type="audio/mpeg"/>
+                        Your browser does not support audio playback.
+                    </audio>
+                </div>''')
+    return '\n'.join(cards)
+
+
 def create_music_page(track_tabs, melotations, template_file, output_file):
     """Create or update the music.html page with tabs."""
     with open(template_file, 'r', encoding='utf-8') as f:
@@ -219,7 +249,7 @@ def create_music_page(track_tabs, melotations, template_file, output_file):
             f'''                    <button class="music-tab" data-tab="melotations">
                         <span class="tab-icon">🎼</span>
                         <span class="tab-label">Melotations</span>
-                        <span class="tab-count">{len(melotations)}</span>
+                        <span class="tab-count">{len(melotations) + len(SCORE_MELOTATIONS)}</span>
                     </button>'''
         )
 
@@ -233,11 +263,13 @@ def create_music_page(track_tabs, melotations, template_file, output_file):
                     </div>
                 </div>''' for melotation in melotations
         ])
+        score_cards = build_score_cards()
         tab_contents.append(
             f'''                <div class="music-tab-content" id="melotations-content">
                     <div class="melotations-grid">
 {melotations_cards}
                     </div><!-- end melotations-grid -->
+{score_cards}
                 </div>'''
         )
 

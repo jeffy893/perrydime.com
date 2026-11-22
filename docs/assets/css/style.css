@@ -1978,3 +1978,29 @@ section h2 {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     }
 }
+
+/* Melotation sheet music with audio */
+.melotation-score {
+    background: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+    margin-top: var(--spacing-xl);
+    text-align: center;
+}
+.melotation-score h4 {
+    color: var(--color-primary);
+    font-size: var(--font-size-lg);
+    margin: 0 0 var(--spacing-sm) 0;
+}
+.melotation-score img {
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    margin: var(--spacing-lg) auto;
+}
+.melotation-score audio {
+    width: 100%;
+    max-width: 500px;
+}
