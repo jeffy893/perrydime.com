@@ -421,6 +421,10 @@ def main():
     # Generate HTML
     print("\n2. Generating publications.html...")
     generate_publications_html(publications)
+
+    # Re-add The Great Anxiety audiobook feature after the hero
+    from upsert_great_anxiety import upsert as upsert_great_anxiety
+    upsert_great_anxiety(OUTPUT_FILE)
     
     print("\n" + "=" * 70)
     print("Publications generation complete!")

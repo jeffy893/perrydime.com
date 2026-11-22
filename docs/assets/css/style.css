@@ -2012,3 +2012,142 @@ section h2 {
     color: var(--color-accent);
     margin-top: var(--spacing-md);
 }
+
+/* ========================================
+   THE GREAT ANXIETY (audiobook feature)
+   ======================================== */
+.great-anxiety {
+    background: linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-white) 55%, var(--color-bg-subtle) 100%);
+    border-top: 4px solid var(--color-accent);
+    border-bottom: 1px solid var(--color-primary-1);
+}
+.ga-inner {
+    display: grid;
+    grid-template-columns: minmax(200px, 300px) 1fr;
+    gap: var(--spacing-2xl);
+    align-items: center;
+}
+.ga-cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-xl);
+    transition: transform var(--transition-normal);
+}
+.ga-cover a:hover img {
+    transform: translateY(-6px);
+}
+.ga-kicker {
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    font-weight: var(--font-weight-semibold);
+    margin: 0 0 var(--spacing-sm) 0;
+}
+.great-anxiety h2 {
+    color: var(--color-primary);
+    margin: 0;
+    text-align: left;
+}
+.ga-subtitle {
+    font-style: italic;
+    color: var(--color-secondary);
+    margin: var(--spacing-xs) 0 var(--spacing-lg) 0;
+}
+.ga-hook {
+    font-size: var(--font-size-lg);
+    color: var(--color-primary);
+    font-weight: var(--font-weight-semibold);
+    margin: 0 0 var(--spacing-sm) 0;
+}
+.ga-description {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin: 0 0 var(--spacing-lg) 0;
+}
+.ga-listen {
+    background: var(--color-white);
+    border: 2px solid var(--color-highlight);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+}
+.ga-listen-label {
+    font-family: var(--font-family-secondary);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-md) 0;
+}
+.ga-spotify {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-radius: 12px;
+}
+.ga-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+.ga-btn {
+    flex: 1 1 200px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: 0.7rem 1rem;
+    border-radius: var(--border-radius-md);
+    font-family: var(--font-family-secondary);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.ga-btn svg {
+    height: 1.6rem;
+    width: auto;
+    flex-shrink: 0;
+}
+.ga-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+.ga-btn-spotify {
+    background: #121212;
+    color: #ffffff;
+}
+.ga-btn-youtube {
+    background: var(--color-white);
+    color: #212121;
+    border: 2px solid var(--color-secondary-2);
+}
+.ga-read {
+    margin: var(--spacing-lg) 0 0 0;
+    color: var(--color-text-light);
+}
+.ga-read a {
+    color: var(--color-accent);
+    font-weight: var(--font-weight-medium);
+}
+.ga-read a:hover {
+    color: var(--color-primary);
+}
+@media (max-width: 768px) {
+    .ga-inner {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+    .ga-cover {
+        max-width: 240px;
+        margin: 0 auto;
+    }
+    .great-anxiety h2,
+    .ga-kicker,
+    .ga-subtitle,
+    .ga-hook {
+        text-align: center;
+    }
+}
