@@ -160,6 +160,7 @@ def load_tracks_from_subfolders():
 SCORE_MELOTATIONS = [
     ("artificial-intercourse", "Artificial_Intercourse", "Guitar music from the Survitality book."),
     ("natural-intercourse", "Natural_Intercourse", "Guitar music from the Survitality book."),
+    ("shareholder-son", "Shareholder Son", "In a dream, I flew a spaceship past the lesser gods to Doc Zeus at the port of a goddess. While he courted, he asked me to take the helm. The chant: \"My shareholder son, I give my chair to you.\""),
     ("soul-beat", "Soul Beat", "The beat that has rested in my soul throughout my life. It comes out when I drum my hands on my chest, in bed or at my desk, while being skooled."),
 ]
 SCORE_ASSET_DIR = "assets/melotations"
