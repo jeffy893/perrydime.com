@@ -14,7 +14,7 @@ from bs4 import BeautifulSoup
 SCRIPT_DIR = Path(__file__).parent.resolve()
 PRODUCTIONS_DIR = SCRIPT_DIR / "source/productions"
 MELOTATIONS_SOURCE = SCRIPT_DIR / "source/productions-melotations"
-MELOTATIONS_PDF_TITLE = "Melotations worked out by ear with a Melodica by memory"
+MELOTATIONS_PDF_TITLE = "Melotations worked out by ear with a Melodica from memory"
 MELOTATIONS_DEST = SCRIPT_DIR / "docs/assets/pdfs/melotations"
 AUDIO_DEST_ROOT = SCRIPT_DIR / "docs/assets/audio"
 OUTPUT_FILE = SCRIPT_DIR / "docs/music.html"
