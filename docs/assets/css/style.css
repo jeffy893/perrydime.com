@@ -2151,3 +2151,10 @@ section h2 {
         text-align: center;
     }
 }
+
+.melotation-blurb {
+    color: var(--color-text-light);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    margin: 0 0 var(--spacing-sm) 0;
+}

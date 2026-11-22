@@ -355,6 +355,28 @@
                 }
             });
         });
+
+        // Open the tab named in the URL hash, e.g. music.html#melotations
+        function openTabFromHash() {
+            const name = window.location.hash.replace('#', '');
+            if (!name) {
+                return;
+            }
+            const button = document.querySelector(`.music-tab[data-tab="${CSS.escape(name)}"]`);
+            if (button) {
+                button.click();
+                const tabs = document.querySelector('.music-tabs');
+                if (tabs) {
+                    // keep the tab row visible below the sticky site header
+                    const header = document.querySelector('header');
+                    const offset = (header ? header.getBoundingClientRect().height : 0) + 16;
+                    const top = tabs.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top: top, behavior: 'smooth' });
+                }
+            }
+        }
+        openTabFromHash();
+        window.addEventListener('hashchange', openTabFromHash);
     }
     
     // Initialize music tabs when DOM is ready
