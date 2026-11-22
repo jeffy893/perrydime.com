@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 SCRIPT_DIR = Path(__file__).parent.resolve()
 PRODUCTIONS_DIR = SCRIPT_DIR / "source/productions"
 MELOTATIONS_SOURCE = SCRIPT_DIR / "source/productions-melotations"
+MELOTATIONS_PDF_TITLE = "Melotations worked out by ear with a Melodica by memory"
 MELOTATIONS_DEST = SCRIPT_DIR / "docs/assets/pdfs/melotations"
 AUDIO_DEST_ROOT = SCRIPT_DIR / "docs/assets/audio"
 OUTPUT_FILE = SCRIPT_DIR / "docs/music.html"
@@ -266,8 +267,8 @@ def create_music_page(track_tabs, melotations, template_file, output_file):
         # Melotations tab content
         melotations_embeds = '\n'.join([
             f'''                <div class="melotation-pdf">
-                    <h4>{melotation['title']}</h4>
-                    <iframe class="melotation-pdf-frame" src="{melotation['path']}#view=FitH" title="{melotation['title']} (PDF)" loading="lazy"></iframe>
+                    <h4>{MELOTATIONS_PDF_TITLE}</h4>
+                    <iframe class="melotation-pdf-frame" src="{melotation['path']}#view=FitH" title="{MELOTATIONS_PDF_TITLE} (PDF)" loading="lazy"></iframe>
                     <p class="melotation-pdf-link"><a href="{melotation['path']}" target="_blank" class="melotation-link">Open the PDF in a new tab</a></p>
                 </div>''' for melotation in melotations
         ])
