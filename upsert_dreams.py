@@ -25,7 +25,7 @@ ALLEGORIES_TABS_HTML = """
 <div class="art-tabs">
   <a class="art-tab allegories-tab" href="https://wiki.richards.systems/pages/Allegories_17760257.html" target="_blank" rel="noopener">
     <span class="tab-icon">📜</span>
-    <span class="tab-label">Allegories</span>
+    <span class="tab-label">Visions of the Future</span>
     <span class="tab-count">↗</span>
   </a>
 </div>
