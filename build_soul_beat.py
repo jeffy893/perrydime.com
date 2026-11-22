@@ -3,7 +3,7 @@
 Builds the "Soul Beat" melotation: sheet music (SVG) and an MP3 rendered from it.
 
 The pattern below was transcribed from source/productions-melotations/soul-beat/soul-beat.m4a
-(about 116 BPM, 4/4, repeating one-bar groove built from dotted eighth notes).
+(about 116 BPM, 4/4, a repeating one-bar groove).
 Both the notation and the audio are generated from the same PATTERN list, so they always agree.
 
 Outputs (in docs/assets/melotations/soul-beat/):
@@ -27,31 +27,36 @@ BARS_IN_MP3 = 8
 SR = 44100
 
 # One bar of 4/4 = 16 sixteenth-note slots.
-# (slot, instrument, duration in sixteenths)
-# Five dotted eighths (3 sixteenths each) plus a sixteenth rest = 16.
+# (slot, instrument, duration in sixteenths, loudness 0-1; loudness applies to ghost notes)
+# Kick on 1 and the "&" of 3, snare on the "&" of 2, medium ghost notes on the "a" of 1
+# and the "e" of 3, and light ghost notes in between. Durations fill the bar exactly.
 PATTERN = [
-    (0, "kick", 3),
-    (3, "ghost", 3),
-    (6, "snare", 3),
-    (9, "ghost", 3),
-    (12, "kick", 3),
+    (0, "kick", 2, 1.00),
+    (2, "ghost", 1, 0.16),
+    (3, "ghost", 1, 0.40),
+    (4, "ghost", 2, 0.20),
+    (6, "snare", 2, 0.85),
+    (8, "ghost", 1, 0.16),
+    (9, "ghost", 1, 0.40),
+    (10, "ghost", 2, 0.20),
+    (12, "kick", 2, 0.85),
+    (14, "ghost", 2, 0.16),
 ]
-REST_SLOT = 15  # sixteenth rest
 
 
 # ---------------------------------------------------------------- notation
 def build_svg():
-    W, H = 900, 330
+    W, H = 1000, 330
     staff_top, gap = 120, 14           # five lines: y = top + i*gap
     lines = [staff_top + i * gap for i in range(5)]
-    bar_x0, bar_x1 = 190, 840
+    bar_x0, bar_x1 = 190, 940
     slot_w = (bar_x1 - bar_x0 - 70) / 16.0
     first_x = bar_x0 + 45
 
     def sx(slot):
         return first_x + slot * slot_w
 
-    # vertical positions: kick in bottom space, snare in third space from bottom
+    # kick in the bottom space, snare in the third space from the bottom
     y_kick = lines[4] - gap / 2
     y_snare = lines[2] + gap / 2
     ypos = {"kick": y_kick, "snare": y_snare, "ghost": y_snare}
@@ -71,7 +76,6 @@ def build_svg():
     # staff
     for y in lines:
         a(f'<line x1="40" y1="{y}" x2="{bar_x1}" y2="{y}" stroke="#222" stroke-width="1.2"/>')
-    # opening barline
     a(f'<line x1="40" y1="{lines[0]}" x2="40" y2="{lines[4]}" stroke="#222" stroke-width="1.5"/>')
     # percussion clef: two thick vertical bars
     for cx in (80, 92):
@@ -91,40 +95,38 @@ def build_svg():
     for yy in (lines[1] + gap / 2, lines[3] - gap / 2):
         a(f'<circle cx="{bar_x1-15}" cy="{yy}" r="2.3" fill="#222"/>')
 
-    # notes
+    # notes (stems up, beamed per beat)
     stem_len = 40
-    for slot, inst, dur in PATTERN:
+    beam_y = y_snare - stem_len
+    notes = {slot: (inst, dur) for slot, inst, dur, _v in PATTERN}
+    for slot, (inst, dur) in notes.items():
         x, y = sx(slot), ypos[inst]
-        ghost = inst == "ghost"
-        if ghost:
-            # parentheses around the notehead
-            a(f'<text x="{x-14}" y="{y+6}" font-size="18" fill="#222">(</text>')
-            a(f'<text x="{x+7.5}" y="{y+6}" font-size="18" fill="#222">)</text>')
+        if inst == "ghost":
+            a(f'<text x="{x-14.5}" y="{y+6}" font-size="17" fill="#222">(</text>')
+            a(f'<text x="{x+8}" y="{y+6}" font-size="17" fill="#222">)</text>')
         a(f'<ellipse cx="{x}" cy="{y}" rx="6.2" ry="4.6" transform="rotate(-20 {x} {y})" fill="#222"/>')
-        sx_stem = x + 5.8
-        a(f'<line x1="{sx_stem}" y1="{y-1}" x2="{sx_stem}" y2="{y-stem_len}" stroke="#222" stroke-width="1.4"/>')
-        # eighth flag
-        top = y - stem_len
-        a(f'<path d="M{sx_stem} {top} c 2 10 16 14 12 30 c 2 -10 -6 -14 -12 -16 z" fill="#222"/>')
-        # augmentation dot
-        a(f'<circle cx="{x+14}" cy="{y-gap/4}" r="2" fill="#222"/>')
-        if inst == "kick" and slot == 0:
-            # accent on the downbeat
-            a(f'<path d="M{x-6} {top-12} L{x+6} {top-8} L{x-6} {top-4}" fill="none" stroke="#222" stroke-width="1.4"/>')
-
-    # sixteenth rest
-    rx, ry = sx(REST_SLOT) + 4, lines[2]
-    a(f'<circle cx="{rx-2}" cy="{ry-7}" r="2.6" fill="#222"/>')
-    a(f'<circle cx="{rx-5}" cy="{ry+2}" r="2.6" fill="#222"/>')
-    a(f'<path d="M{rx+3} {ry-12} L{rx-6} {ry+14}" stroke="#222" stroke-width="1.8" fill="none"/>')
+        stem_x = x + 5.8
+        a(f'<line x1="{stem_x}" y1="{y-1}" x2="{stem_x}" y2="{beam_y}" stroke="#222" stroke-width="1.4"/>')
+    for beat in range(4):
+        slots = sorted(sl for sl in notes if beat * 4 <= sl < beat * 4 + 4)
+        xs = [sx(sl) + 5.8 for sl in slots]
+        a(f'<line x1="{xs[0]-0.7}" y1="{beam_y+2}" x2="{xs[-1]+0.7}" y2="{beam_y+2}" stroke="#222" stroke-width="4.5"/>')
+        # second beam joins neighbouring sixteenth notes
+        for sl, nxt in zip(slots, slots[1:]):
+            if notes[sl][1] == 1 and notes[nxt][1] == 1 and nxt == sl + 1:
+                a(f'<line x1="{sx(sl)+5.8}" y1="{beam_y+9}" x2="{sx(nxt)+5.8}" y2="{beam_y+9}" '
+                  f'stroke="#222" stroke-width="3.5"/>')
+    # accent on the downbeat
+    x0 = sx(0)
+    a(f'<path d="M{x0-6} {beam_y-14} L{x0+6} {beam_y-10} L{x0-6} {beam_y-6}" fill="none" stroke="#222" stroke-width="1.4"/>')
 
     # counting row under the staff
     count_y = lines[4] + 32
-    labels = ["1", "e", "&", "a", "2", "e", "&", "a", "3", "e", "&", "a", "4", "e", "&", "a"]
+    labels = ["1", "e", "&amp;", "a", "2", "e", "&amp;", "a", "3", "e", "&amp;", "a", "4", "e", "&amp;", "a"]
     for i, lab in enumerate(labels):
         weight = "bold" if lab.isdigit() else "normal"
         a(f'<text x="{sx(i)}" y="{count_y}" text-anchor="middle" font-size="12" '
-          f'font-weight="{weight}" fill="#777">{"&amp;" if lab == "&" else lab}</text>')
+          f'font-weight="{weight}" fill="#777">{lab}</text>')
 
     # legend
     ly = H - 52
@@ -136,19 +138,14 @@ def build_svg():
       f'<ellipse cx="410" cy="{ly}" rx="5.5" ry="4" transform="rotate(-20 410 {ly})" fill="#222"/>'
       f'<text x="418" y="{ly+5}" font-size="15" fill="#222">)</text>')
     a(f'<text x="432" y="{ly+4}" font-size="12" fill="#333">Ghost note (soft snare)</text>')
-    a(f'<text x="620" y="{ly+4}" font-size="12" fill="#333">Repeat the bar throughout</text>')
+    a(f'<text x="640" y="{ly+4}" font-size="12" fill="#333">Repeat the bar throughout</text>')
     a(f'<text x="40" y="{H-18}" font-size="12" font-style="italic" fill="#666">'
-      f'Five dotted eighths and a sixteenth rest: a 3+3+3+3+3+1 groove that cycles against the 4/4 pulse.</text>')
+      f'Kick and snare land every dotted eighth, with soft ghost notes (two levels) filling the gaps.</text>')
     a('</svg>')
     return "\n".join(o)
 
 
 # ------------------------------------------------------------------- audio
-def _lp(x, hz, order=2):
-    b, a = butter(order, hz / (SR / 2), btype="low")
-    return lfilter(b, a, x)
-
-
 def _bp(x, lo, hi):
     b, a = butter(2, [lo / (SR / 2), hi / (SR / 2)], btype="band")
     return lfilter(b, a, x)
@@ -167,11 +164,11 @@ def synth(inst, rng):
         noise = _bp(rng.standard_normal(len(t)), 1200, 8000) * np.exp(-t * 17)
         tone = (np.sin(2 * np.pi * 190 * t) + 0.5 * np.sin(2 * np.pi * 330 * t)) * np.exp(-t * 26)
         return 0.7 * noise + 0.55 * tone
-    # ghost: quiet, short snare
+    # ghost: short snare, scaled by the note's loudness
     t = np.arange(int(0.16 * SR)) / SR
     noise = _bp(rng.standard_normal(len(t)), 1200, 7000) * np.exp(-t * 32)
     tone = np.sin(2 * np.pi * 200 * t) * np.exp(-t * 40)
-    return 0.22 * (0.7 * noise + 0.55 * tone)
+    return 0.7 * noise + 0.55 * tone
 
 
 def build_mp3(mp3_path):
@@ -180,9 +177,15 @@ def build_mp3(mp3_path):
     total = int((BARS_IN_MP3 * 16 * sixteenth + 0.6) * SR)
     mix = np.zeros(total)
     for bar in range(BARS_IN_MP3):
-        for slot, inst, _dur in PATTERN:
+        for slot, inst, _dur, vel in PATTERN:
             start = int((bar * 16 + slot) * sixteenth * SR)
             s = synth(inst, rng)
+            if inst == "ghost":
+                s = s * vel
+            elif inst == "snare":
+                s = s * vel
+            else:
+                s = s * vel
             mix[start:start + len(s)] += s[: total - start]
     mix = np.tanh(1.4 * mix) / np.tanh(1.4)
     mix = 0.9 * mix / np.max(np.abs(mix))
