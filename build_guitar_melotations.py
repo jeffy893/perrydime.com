@@ -79,7 +79,45 @@ NATURAL = [
     "D4:4 D#4:4 E4:4",
 ] + ["r:12"] * 18
 
+# "Buried_Intercourse" (2/4). The source image is small and the clusters are dense, so this is a
+# best-effort reading: rhythms and the repeating figures are reliable, a few accidentals are guesses.
+B_OPEN = "r:2 [D5 F5]:2 [C#5 D5]:2 [G#4 D5]:2"
+B_DG = "D5:2 G#4:2 D5:2 G#4:2"
+B_TURN = "r:2 [G#4 D5]:2 [B4 D5]:2 [G#4 A4]:2"
+B_AG = "A#4:2 G4:2 A#4:2 E#4:2"
+B_AE1 = "A#4:2 E#4:2 A#4:2 E4:2"
+B_AE2 = "A#4:2 E4:2 A#4:2 E4:2"
+B_RISE = "r:2 E4:2 E#4:2 G4:2"
+B_AA = "A#4:2 G4:2 A#4:2 A#4:2"
+B_CA = "C5:2 A4:2 C5:2 A#4:2"
+
+BURIED = [
+    # 1-6
+    B_OPEN, B_DG, B_OPEN, B_DG, B_TURN, B_AG,
+    # 7-12
+    B_AE1, B_AE2, B_OPEN, B_DG, "r:2 [C#5 D5]:2 [D5 F5]:2 [G#4 D5]:2", B_DG,
+    # 13-19
+    B_TURN, B_AG, B_AE1, "A#4:2 E4:2 [G#4 A4]:2 E4:2", B_RISE, B_AA, B_CA,
+    # 20-26
+    B_DG, B_RISE, B_AA, B_CA, B_DG, "r:2 [G#4 D5]:2 [C#5 D5]:2 [D5 F5]:2", "F5:2 D5:2 F5:2 D5:2",
+    # 27-32
+    "F5:2 [E#5 G5]:2 [D5 F5]:2 [C#5 D5]:2", "D#5:2 C5:2 D#5:2 C5:2",
+    "D#5:2 [D5 F5]:2 [C#5 D5]:2 [G#4 D5]:2", "D5:2 G#4:2 [B4 D5]:2 [E4 A#4]:2~",
+    "[E4 A#4]:2 [A#4 D5]:4 [B4 D5]:2~", "[B4 D5]:4 [E4 A#4]:2 [E4 A#4]:2",
+    # 33-39
+    B_OPEN, B_DG, B_OPEN, B_DG, "r:2 [G#4 D5]:2 [B4 D5]:2 [G#4 A4]:2~",
+    "[G#4 A4]:4 r:2 [E4 A4]:2~", "[E4 A4]:4 r:2 [D4 A#4]:2",
+    # 40-41
+    "r:8", "r:8",
+]
+
 PIECES = [
+    {
+        "slug": "buried-intercourse",
+        "title": "Buried_Intercourse",
+        "bars": BURIED,
+        "beats": 2, "beat_type": 4, "bpm": 92, "pickup": False,
+    },
     {
         "slug": "artificial-intercourse",
         "title": "Artificial_Intercourse",
@@ -205,9 +243,7 @@ def musicxml(piece, bars):
                     s += f'<accidental>{show}</accidental>'
                 if n["dur"] < 8 and n["dur"] != 4 or (n["dur"] == 4 and False):
                     pass
-                if j in beam_of and k == 0:
-                    s += f'<beam number="1">{beam_of[j]}</beam>'
-                elif j in beam_of:
+                if j in beam_of and k == 0:     # Verovio accepts the beam on the chord's first note only
                     s += f'<beam number="1">{beam_of[j]}</beam>'
                 if n["tie_stop"] or n["tie_start"]:
                     s += '<notations>'

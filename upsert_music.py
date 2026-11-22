@@ -158,10 +158,11 @@ def load_tracks_from_subfolders():
 # Melotations shown as on-page sheet music (SVG) with a playable MP3, generated
 # by build_soul_beat.py: (folder name, title, description)
 SCORE_MELOTATIONS = [
-    ("artificial-intercourse", "Artificial_Intercourse", "Guitar music from the Survitality book."),
-    ("natural-intercourse", "Natural_Intercourse", "Guitar music from the Survitality book."),
-    ("shareholder-son", "Shareholder Son", "In a dream, I flew a spaceship past the lesser gods to Doc Zeus at the port of a goddess. While he courted, he asked me to take the helm. The chant: \"My shareholder son, I give my chair to you.\""),
     ("soul-beat", "Soul Beat", "The beat that has rested in my soul throughout my life. It comes out when I drum my hands on my chest, in bed or at my desk, while being skooled."),
+    ("shareholder-son", "Shareholder Son", "In a dream, I flew a spaceship past the lesser gods to Doc Zeus at the port of a goddess. While he courted, he asked me to take the helm. The chant: \"My shareholder son, I give my chair to you.\""),
+    ("artificial-intercourse", "Artificial_Intercourse", "Guitar music from the Survitality book."),
+    ("buried-intercourse", "Buried_Intercourse", "Guitar music from the Survitality book. Transcribed from a small printed score, so a few accidentals in the clusters are a best guess."),
+    ("natural-intercourse", "Natural_Intercourse", "Guitar music from the Survitality book, inspired by Led Zeppelin's \"Since I've Been Loving You.\""),
 ]
 SCORE_ASSET_DIR = "assets/melotations"
 
