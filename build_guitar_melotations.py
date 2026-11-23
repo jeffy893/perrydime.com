@@ -200,6 +200,7 @@ PIECES = [
         # MP3 is Perry's own recording, trimmed so it starts at the first note (9.79 s)
         "recording": "source/productions-melotations/2022-04-20_Godfather_Theme_only-guitar.mp3",
         "trim_start": 9.70,
+        "hum_hz": 60,      # the recording has 60 Hz mains hum with harmonics
     },
     {
         "slug": "buried-intercourse",
@@ -461,12 +462,21 @@ def synth(piece, bars, mp3_path):
             check=True)
 
 
+def dehum_filter(hum_hz):
+    """Mains hum removal: high-pass below the guitar's range, narrow notches on the hum
+    frequency and its harmonics up to about 3.6 kHz, then light broadband noise reduction."""
+    notches = ",".join(f"bandreject=f={hum_hz * n}:width_type=h:w=4" for n in range(1, 61))
+    return f"highpass=f=100:p=2,{notches},afftdn=nr=12:nf=-60:tn=1"
+
+
 def trim_recording(piece, mp3_path):
-    """Use the original recording, cut to start at the first note, with short fades."""
+    """Use the original recording, cut to start at the first note, with short fades.
+    If the piece sets hum_hz, mains hum is filtered out first."""
     src = Path(__file__).parent.resolve() / piece["recording"]
+    dehum = dehum_filter(piece["hum_hz"]) + "," if piece.get("hum_hz") else ""
     subprocess.run(
         ["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{piece['trim_start']}", "-i", str(src),
-         "-af", "afade=t=in:d=0.05,areverse,silenceremove=start_periods=1:start_threshold=-60dB,"
+         "-af", f"{dehum}afade=t=in:d=0.05,areverse,silenceremove=start_periods=1:start_threshold=-60dB,"
                 "afade=t=in:d=0.5,areverse,loudnorm=I=-16:TP=-1.5",
          "-ar", "44100", "-codec:a", "libmp3lame", "-b:a", "192k",
          "-metadata", f"title={piece['title']}", "-metadata", "artist=Perry Dime",
