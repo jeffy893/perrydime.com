@@ -150,7 +150,54 @@ BURIED = [
     "Bb4:4 r:4",
 ]
 
+# "Godfather Theme" (4/4), the Love Theme from The Godfather (Nino Rota) as Perry played it by ear
+# on guitar in 2022 (source/productions-melotations/2022-04-20_Godfather_Theme_only-guitar.mp3).
+# Onsets and pitches were detected from the guitar-only track and quantized by hand to a
+# sixteenth-note grid (one sixteenth = 0.19 s, about 79 BPM), phrase by phrase to absorb rubato.
+# Sounding range Bb3-Bb4 in C minor; written an octave higher as usual for guitar.
+GODFATHER = [
+    "G5:8~ G5:2 F#5:4 G5:2",
+    "Ab5:8~ Ab5:2 G5:4 G5:2",
+    "G5:2 Eb5:12 r:2",
+    "r:16",
+    "G5:8~ G5:2 F#5:3 G5:3",
+    "Ab5:12 G5:2 G5:2",
+    "D5:12 r:4",
+    "r:16",
+    "G5:8 F#5:4 G5:4",
+    "Bb5:8 G5:6 F#5:2~",
+    "F#5:8 A5:4 G5:4~",
+    "G5:12 r:4",
+    "Eb5:8~ Eb5:2 F5:6",
+    "Eb5:16",
+    "Eb5:8~ Eb5:2 F5:4 Eb5:2",
+    "Eb5:12 G5:2 Bb5:2",
+    "A5:8 Bb5:4 G5:2 A5:2",
+    "G5:4 Eb5:6 F5:2 Eb5:2 D5:2",
+    "C5:2 D5:12 r:2",
+    "r:8 D5:2 G5:2 Bb5:2 A5:2",
+    "G5:4 Bb5:6 G5:2 A5:2 G5:2",
+    "Eb5:6 D5:4 C5:6~",
+    "C5:12 r:4",
+    "r:6 C5:2 Eb5:4 G5:4",
+    "G5:16",
+    "r:6 C5:2 Eb5:4 F#5:4",
+    "G5:16",
+    "r:6 G4:2 Bb4:6 F5:2",
+    "Eb5:6 F5:8 Eb5:2",
+    "Eb5:8~ Eb5:2 F#5:6",
+    "G5:12 F#5:2 G5:2",
+    "Ab5:12 G5:4",
+    "G5:2 Eb5:12 r:2",
+]
+
 PIECES = [
+    {
+        "slug": "godfather-theme",
+        "title": "Godfather Theme",
+        "bars": GODFATHER,
+        "beats": 4, "beat_type": 4, "bpm": 79, "pickup": False, "fifths": -3,
+    },
     {
         "slug": "buried-intercourse",
         "title": "Buried_Intercourse",

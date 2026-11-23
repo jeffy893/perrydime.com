@@ -164,6 +164,7 @@ SCORE_MELOTATIONS = [
     ("artificial-intercourse", "Artificial_Intercourse", "Guitar music from the Survitality book."),
     ("buried-intercourse", "Buried_Intercourse", "Guitar music from the Survitality book, recomposed from my 2022 recording of the piece, including its slow chordal intro."),
     ("natural-intercourse", "Natural_Intercourse", "Guitar music from the Survitality book, inspired by Led Zeppelin's \"Since I've Been Loving You.\""),
+    ("godfather-theme", "Godfather Theme", "The Love Theme from The Godfather by Nino Rota, played by ear for years, notated from that recording."),
 ]
 SCORE_ASSET_DIR = "assets/melotations"
 DEFAULT_HINT = "Press play to hear it rendered from the notation."
