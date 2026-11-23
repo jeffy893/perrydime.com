@@ -197,6 +197,9 @@ PIECES = [
         "title": "Godfather Theme",
         "bars": GODFATHER,
         "beats": 4, "beat_type": 4, "bpm": 79, "pickup": False, "fifths": -3,
+        # MP3 is Perry's own recording, trimmed so it starts at the first note (9.79 s)
+        "recording": "source/productions-melotations/2022-04-20_Godfather_Theme_only-guitar.mp3",
+        "trim_start": 9.70,
     },
     {
         "slug": "buried-intercourse",
@@ -458,6 +461,19 @@ def synth(piece, bars, mp3_path):
             check=True)
 
 
+def trim_recording(piece, mp3_path):
+    """Use the original recording, cut to start at the first note, with short fades."""
+    src = Path(__file__).parent.resolve() / piece["recording"]
+    subprocess.run(
+        ["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{piece['trim_start']}", "-i", str(src),
+         "-af", "afade=t=in:d=0.05,areverse,silenceremove=start_periods=1:start_threshold=-60dB,"
+                "afade=t=in:d=0.5,areverse,loudnorm=I=-16:TP=-1.5",
+         "-ar", "44100", "-codec:a", "libmp3lame", "-b:a", "192k",
+         "-metadata", f"title={piece['title']}", "-metadata", "artist=Perry Dime",
+         str(mp3_path)],
+        check=True)
+
+
 def main():
     for piece in PIECES:
         bars = parse_piece(piece)
@@ -470,7 +486,10 @@ def main():
         out = OUT_ROOT / piece["slug"]
         out.mkdir(parents=True, exist_ok=True)
         render_svg(piece, bars, out / f"{piece['slug']}.svg")
-        synth(piece, bars, out / f"{piece['slug']}.mp3")
+        if piece.get("recording"):
+            trim_recording(piece, out / f"{piece['slug']}.mp3")
+        else:
+            synth(piece, bars, out / f"{piece['slug']}.mp3")
         print(f"{piece['slug']}: {len(bars)} bars written to {out}")
 
 

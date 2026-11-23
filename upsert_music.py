@@ -171,6 +171,7 @@ DEFAULT_HINT = "Press play to hear it rendered from the notation."
 # Cards whose audio is a real recording, not rendered from the notation
 SCORE_HINTS = {
     "shareholder-son": "Press play to hear the original recording.",
+    "godfather-theme": "Press play to hear the original recording.",
 }
 
 
